@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 50px 0;
+        }
+
+        th,
+        td {
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: #333;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        td ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        td ul li {
+            background: #eee;
+            margin: 5px 0;
+            padding: 5px;
+        }
+
+        button {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+    </style>
+    <script>
+        function buy(amount, description) {
+            var machineId = prompt("Please enter your unique machine ID:");
+            if (machineId) {
+                var form = document.createElement("form");
+                form.action = "https://www.paypal.com/cgi-bin/webscr";
+                form.method = "post";
+                form.target = "_top";
+
+                var inputs = [
+                    { name: "cmd", value: "_xclick" },
+                    { name: "business", value: "paypal@BestSEOLosAngeles.com" },
+                    { name: "item_name", value: description },
+                    { name: "amount", value: amount },
+                    { name: "currency_code", value: "USD" },
+                    { name: "custom", value: machineId },
+                    { name: "return", value: "http://Snipeable.com" },
+                    { name: "cancel_return", value: "http://Snipeable.com" }
+                ];
+
+                inputs.forEach(function (input) {
+                    var hiddenInput = document.createElement("input");
+                    hiddenInput.type = "hidden";
+                    hiddenInput.name = input.name;
+                    hiddenInput.value = input.value;
+                    form.appendChild(hiddenInput);
+                });
+
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+
+        function closePage() {
+            window.location.href = "http://Snipeable.com";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>License</h1>
+        <table>
+            <tr>
+                <th colspan="5">Pay-Per-Snipe</th>
+            </tr>
+            <tr>
+                <td>
+                    $0.99
+                    <ul>
+                        <li>1 Snipe</li>
+                    </ul>
+                    <button onclick="buy('0.99', '1 Snipe')">Buy</button>
+                </td>
+                <td>
+                    $4.99
+                    <ul>
+                        <li>5 Snipes</li>
+                    </ul>
+                    <button onclick="buy('4.99', '5 Snipes')">Buy</button>
+                </td>
+                <td>
+                    $9.99
+                    <ul>
+                        <li>10 Snipes</li>
+                    </ul>
+                    <button onclick="buy('9.99', '10 Snipes')">Buy</button>
+                </td>
+                <td>
+                    $24.99
+                    <ul>
+                        <li>25 Snipes</li>
+                    </ul>
+                    <button onclick="buy('24.99', '25 Snipes')">Buy</button>
+                </td>
+                <td>
+                    $49.99
+                    <ul>
+                        <li>50 Snipes</li>
+                    </ul>
+                    <button onclick="buy('49.99', '50 Snipes')">Buy</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5"><br /><br /><br /></td>
+            </tr>
+            <tr>
+                <th colspan="5">Unlimited Snipes</th>
+            </tr>
+            <tr>
+                <td>
+                    $9.99/Month
+                    <ul>
+                        <li>1 Month</li>
+                    </ul>
+                    <button onclick="buy('9.99', '1 Month Unlimited')">Buy</button>
+                </td>
+                <td>
+                    $24.99/Quarter
+                    <ul>
+                        <li>3 Months</li>
+                    </ul>
+                    <button onclick="buy('24.99', '3 Months Unlimited')">Buy</button>
+                </td>
+                <td>
+                    $49.99/Semi-Annual
+                    <ul>
+                        <li>6 Months</li>
+                    </ul>
+                    <button onclick="buy('49.99', '6 Months Unlimited')">Buy</button>
+                </td>
+                <td>
+                    $99.99/Annual
+                    <ul>
+                        <li>12 Months</li>
+                    </ul>
+                    <button onclick="buy('99.99', '12 Months Unlimited')">Buy</button>
+                </td>
+                <td>
+                    $249.99/One-Time
+                    <ul>
+                        <li>Life-Time</li>
+                    </ul>
+                    <button onclick="buy('249.99', 'Life-Time Unlimited')">Buy</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <br /><br /><br />
+                    <button onclick="closePage()">Close</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
