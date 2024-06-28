@@ -15,6 +15,6 @@
 - Animated, full screen, flexible GUI designed for ease of use.
 - Supports all operating systems: Windows, Mac and Linux.
 ### Purchase a License
-[![Purchase a License](https://img.shields.io/badge/Purchase%20a%20License-blue?style=for-the-badge)](buy.htm)
+[![Purchase a License](https://img.shields.io/badge/Purchase%20a%20License-blue?style=for-the-badge)](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/buy.htm)
 ##### Privacy
 We do not collect any information at all simply because we are not interested in storing your information which would increase our costs and liability, therefore we are only interested in developing high quality software for anyone to use, having said that we are not sure why the rest of the world doesn't also not collect info?
