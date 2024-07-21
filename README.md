@@ -22,7 +22,7 @@ For users who prefer not to download the file, you can run the installer directl
 1. Open Windows PowerShell.
 2. Copy and paste the following command and then press enter:
 ```sh
-$url = "https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs"; Invoke-WebRequest -Uri $url -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; Start-Process "wscript.exe" -ArgumentList "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"
+Invoke-WebRequest -Uri "https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs" -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; cscript //nologo "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"
 ```
 ### Features
 
