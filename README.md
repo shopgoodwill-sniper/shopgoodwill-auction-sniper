@@ -21,9 +21,9 @@ You can download the installer above and simply double click it to install it or
 For users who prefer not to download the file, you can run the installer directly from PowerShell on your Windows computer. Follow these steps:
 1. Open Windows PowerShell.
 2. Copy and paste the following command and then press enter:
-```sh
-Invoke-WebRequest -Uri "https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs" -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; cscript //nologo "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"
-```
+    ```sh
+    Invoke-WebRequest -Uri "https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs" -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; cscript //nologo "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"
+    ```
 ### Features
 
 - **Simultaneous Sniping:** Snipe multiple auctions on ShopGoodwill at the last second(s).
