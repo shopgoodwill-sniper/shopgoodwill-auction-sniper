@@ -43,10 +43,6 @@ For users who prefer not to download the file, you can run the installer directl
 - **User-Friendly Interface:** Animated, full-screen GUI designed for ease of use.
 - **Cross-Platform:** Supports Windows, Mac, and Linux.
 
-### Purchase a License
-
-[![Purchase a License](https://img.shields.io/badge/Purchase%20a%20License-blue?style=for-the-badge)](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/buy.htm)
-
 ### Privacy
 
 We do not collect any user information. Our focus is solely on delivering high-quality software without increasing costs or liabilities.
