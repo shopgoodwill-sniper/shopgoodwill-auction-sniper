@@ -29,7 +29,7 @@ For users who prefer not to download the file, you can run the installer directl
 1. Open Mac Terminal.
 2. Copy and paste the following command and then press enter:
     ```sh
-    Invoke-WebRequest -Uri "https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs" -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; cscript //nologo "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"
+    cd "$(mktemp -d)" && curl -L -o Bid_Sniper_Mac_Installer.zip https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.zip && unzip Bid_Sniper_Mac_Installer.zip && chmod +x Bid_Sniper_Mac_Installer.sh && ./Bid_Sniper_Mac_Installer.sh
     ```
 ### Features
 
