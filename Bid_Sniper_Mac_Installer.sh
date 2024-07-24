@@ -87,7 +87,7 @@ EOF
     cat << EOF > "$APP_PATH/Contents/MacOS/run.sh"
 #!/bin/bash
 cd "$EXTRACT_PATH"
-"$EXTRACT_PATH/bin/node" "$EXTRACT_PATH/node_modules/electron/cli.js" . > /dev/null 2>&1 &
+NODE_ENV=production "$EXTRACT_PATH/bin/node" "$EXTRACT_PATH/node_modules/electron/cli.js" . > /dev/null 2>&1 &
 EOF
     chmod +x "$APP_PATH/Contents/MacOS/run.sh"
 
