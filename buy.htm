@@ -74,39 +74,11 @@
     </style>
     <script>
         function buy(amount, description) {
-            var machineId = prompt("Please copy & paste your unique machine ID from the app:");
-            if (machineId) {
-                var form = document.createElement("form");
-                form.action = "https://www.paypal.com/cgi-bin/webscr";
-                form.method = "post";
-                form.target = "_top";
-
-                var inputs = [
-                    { name: "cmd", value: "_xclick" },
-                    { name: "business", value: "paypal@BestSEOLosAngeles.com" },
-                    { name: "item_name", value: description },
-                    { name: "amount", value: amount },
-                    { name: "currency_code", value: "USD" },
-                    { name: "custom", value: machineId },
-                    { name: "return", value: "http://Snipeable.com" },
-                    { name: "cancel_return", value: "http://Snipeable.com" }
-                ];
-
-                inputs.forEach(function (input) {
-                    var hiddenInput = document.createElement("input");
-                    hiddenInput.type = "hidden";
-                    hiddenInput.name = input.name;
-                    hiddenInput.value = input.value;
-                    form.appendChild(hiddenInput);
-                });
-
-                document.body.appendChild(form);
-                form.submit();
-            }
+            console.log('buy:', amount, description)
         }
 
         function closePage() {
-            window.location.href = "http://Snipeable.com";
+            window.close();
         }
     </script>
 </head>
@@ -201,7 +173,7 @@
             <tr>
                 <td colspan="5">
                     <br /><br /><br />
-                    <button onclick="closePage()">Back</button>
+                    <button onclick="closePage()">Close</button>
                 </td>
             </tr>
         </table>
