@@ -1,7 +1,7 @@
 # ShopGoodwill Auction Sniper
 ![ShopGoodwill Auction Sniper](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/shopgoodwillsniper2.png?raw=true)
 ### Download and Install Directly from Windows Command Prompt or Mac Terminal Below
-You can run the installer directly from your Windows command prompt or Mac terminal. Follow these steps:
+You can run the installer directly from your Windows command prompt or Mac terminal. Follow these steps below:
 #### Windows Command Prompt Installation Instructions
 1. Open Windows Command Prompt.
 2. Run the following command and then press enter:
