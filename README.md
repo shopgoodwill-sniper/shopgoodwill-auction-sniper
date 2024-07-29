@@ -13,7 +13,7 @@ For users who prefer not to download the file, you can run the installer directl
 1. Open Mac Terminal.
 2. Copy and paste the following command and then press enter:
     ```sh
-    curl -s https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.sh | bash
+    curl https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.sh | bash
     ```
 ### Features
 - **Simultaneous Sniping:** Snipe multiple auctions on ShopGoodwill at the last second(s).
