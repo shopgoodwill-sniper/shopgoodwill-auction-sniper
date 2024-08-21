@@ -1,12 +1,12 @@
 # ShopGoodwill Auction Sniper
 ![ShopGoodwill Auction Sniper](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/shopgoodwillsniper2.png?raw=true)
 ### Windows PowerShell Install/Update Instructions
-You can run the installer directly from your Windows PowerShell app by copying and pasting the following command and pressing enter:
+Copy and paste the following command into your Windows PowerShell app and then press enter:
 ```sh
 Invoke-WebRequest -Uri "https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs" -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; cscript //nologo "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"
 ```
 ### Mac Terminal Install/Update Instructions
-You can run the installer directly from your Mac Terminal app by copying and pasting the following command and pressing enter:
+Copy and paste the following command into your Mac Terminal app and then press enter:
 ```sh
 curl https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.sh | bash
 ```
