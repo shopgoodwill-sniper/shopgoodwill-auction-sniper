@@ -21,4 +21,4 @@ curl https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_S
 - **User-Friendly Interface:** Animated, full-screen GUI designed for ease of use.
 - **Cross-Platform:** Supports Windows and Mac.
 ### Privacy
-We prioritize delivering high-quality software without raising costs or liabilities, so we do not collect user information.
+We prioritize delivering quality software without raising costs or liabilities, so we do not collect user information.
