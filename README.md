@@ -11,8 +11,8 @@ Copy and paste the following command into your Mac Terminal app and then press e
 curl https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.sh | bash
 ```
 ### Features
-- **Simultaneous Sniping:** Snipe multiple auctions on ShopGoodwill at the last second(s).
-- **Secure:** Your passwords stay on your computer, not on a remote service.
+- **Simultaneous Sniping:** Snipe multiple auctions on ShopGoodwill simultaneously at the last second.
+- **Secure:** Self-hosted solution, never share your password.
 - **Background Mode:** Minimize to System Tray for continuous operation.
 - **Workflow Management:** Organize and schedule bids efficiently.
 - **Snipe Status:** Monitor bid statuses with built-in indicators.
