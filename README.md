@@ -25,4 +25,4 @@ You can run the installer directly from Terminal app on your Mac computer by fol
 - **User-Friendly Interface:** Animated, full-screen GUI designed for ease of use.
 - **Cross-Platform:** Supports Windows, Mac, and Linux.
 ### Privacy
-We do not collect any user information. Our focus is solely on delivering high-quality software without increasing costs or liabilities.
+Our focus is solely on delivering high-quality software without increasing costs or liabilities therefore we do not collect any user information.
