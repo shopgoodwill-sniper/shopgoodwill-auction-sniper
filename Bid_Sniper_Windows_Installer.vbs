@@ -65,7 +65,7 @@ Sub CreateLaunchScript()
     
     Set launchScript = fso.CreateTextFile(launchScriptPath, True)
     launchScript.WriteLine "Set WshShell = CreateObject(""WScript.Shell"")"
-    launchScript.WriteLine "WshShell.Run ""cmd /c set NODE_ENV=production && """"" & fullExtractPath & "\node.exe"""" """"" & fullExtractPath & "\node_modules\electron\cli.js"""" ."", 0, False"
+    launchScript.WriteLine "WshShell.Run ""cmd /c cd /d """"" & fullExtractPath & """"" && set NODE_ENV=production && """"" & fullExtractPath & "\node.exe"""" """"" & fullExtractPath & "\node_modules\electron\cli.js"""" """"" & fullExtractPath & """"""", 0, False"
     launchScript.Close
 End Sub
 
