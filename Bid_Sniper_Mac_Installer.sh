@@ -51,7 +51,6 @@ download_and_extract() {
 # Check if installation was successful
 installation_successful() {
     if [ -f "$EXTRACT_PATH/bin/node" ]; then
-        echo "Node file found."
         return 0
     else
         echo "Node file not found in expected location: $EXTRACT_PATH/bin/node"
