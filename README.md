@@ -14,7 +14,7 @@ curl https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_S
 - **Last-Second Sniping:** Automatically snipes ShopGoodwill auctions at the last second.
 - **Auto Max Bid:** Ensures winning by bidding higher than the current max bid.
 - **Multi-Auction Sniping:** Snipe multiple auctions simultaneously.
-- **Password Security:** Self-hosted setup; never share your password.
+- **Password Security:** Self-hosted setup; never share your password with us.
 - **Background Sniping:** Minimize to system tray for uninterrupted background sniping.
 - **Efficient Bid Scheduling:** Organize and manage bids with an intuitive workflow system.
 - **Real-Time Snipe Monitoring:** Track bids with built-in status indicators.
