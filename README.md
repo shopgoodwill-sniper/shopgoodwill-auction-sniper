@@ -11,16 +11,16 @@ curl https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_S
 ```
 ![ShopGoodwill Auction Sniper](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/shopgoodwillsniper2.png?raw=true)
 ### Features
-- **Snipes Last Second:** Snipes auctions on ShopGoodwill at the last second.
-- **Auto Max Bid:** Automatically snipes auctions greator than the current maximum bid ensuring you win.
-- **Simultaneous Sniping:** Snipe multiple auctions simultaneously.
-- **Secure:** Self-hosted solution, never share your password.
-- **Background Mode:** Minimize to System Tray for background sniping.
-- **Workflow Management:** Organize and schedule bids efficiently.
-- **Snipe Status:** Monitor bid statuses with built-in indicators.
-- **Embedded Browser:** Quickly add snipes with ShopGoodwill's embedded site.
-- **Sound Effects:** Enhance your sniping experience with themed sounds.
-- **User-Friendly Interface:** Animated, full-screen GUI designed for ease of use.
-- **Cross-Platform:** Supports Windows and Mac.
+- **Last-Second Sniping:** Automatically snipes ShopGoodwill auctions in the final moments.
+- **Auto Max Bid:** Ensures victory by bidding higher than the current max bid.
+- **Multi-Auction Sniping:** Snipe multiple auctions simultaneously without limits.
+- **Password Security:** Self-hosted setup; your credentials stay private.
+- **Background Sniping:** Minimize to system tray for uninterrupted background sniping.
+- **Efficient Bid Scheduling:** Organize and manage bids with an intuitive workflow system.
+- **Real-Time Snipe Monitoring:** Track bids with built-in status indicators.
+- **Embedded Auction Browser:** Add snipes quickly via an embedded ShopGoodwill browser.
+- **Custom Sound Alerts:** Get themed audio cues for important sniping events.
+- **Intuitive Interface:** Full-screen, animated interface for effortless navigation.
+- **Cross-Platform Compatibility:** Available on both Windows and Mac.
 #### Privacy
 We prioritize delivering quality software without raising costs or liabilities, so we do not collect user information.
