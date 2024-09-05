@@ -16,10 +16,10 @@ curl https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_S
 - **Multi-Auction Sniping:** Snipe multiple auctions simultaneously.
 - **Password Security:** Self-hosted setup; never share your password with us.
 - **Background Sniping:** Minimize to system tray for background sniping.
-- **Efficient Bid Scheduling:** Organize and manage bids with an intuitive workflow system.
+- **Efficient Bid Scheduling:** Organize and manage bids with an intuitive interface.
 - **Real-Time Snipe Monitoring:** Track bids with built-in status indicators.
 - **Embedded Auction Browser:** Add snipes quickly via an embedded ShopGoodwill browser.
-- **Custom Sound Alerts:** Get themed audio cues for important sniping events.
+- **Sound Effects:** Get themed audio cues for important sniping events.
 - **Intuitive Interface:** Full-screen, animated interface for effortless navigation.
 - **Cross-Platform Compatibility:** Compatible with both Windows and Mac.
 #### Privacy
