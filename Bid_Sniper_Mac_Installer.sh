@@ -3,7 +3,7 @@
 # Define variables
 TEMP_DIR=$(mktemp -d)
 PROFILE_PATH="$HOME"
-DROPBOX_URL="https://dl.dropboxusercontent.com/scl/fi/fkok6s892cm7kb55vrh6x/Bid_Sniper_darwin.zip?rlkey=ha0nsdmygwqirj0nuk7jxg8cz&dl=1&raw=1"
+DROPBOX_URL="https://dl.dropboxusercontent.com/scl/fi/fkok6s892cm7kb55vrh6x/Bid_Sniper_darwin.zip?rlkey=p8vrno4uj0jy2ujff7gey0j9e&st=iuyoq90w&dl=1&raw=1"
 ZIP_FILE="$TEMP_DIR/Bid_Sniper.zip"
 EXTRACT_PATH="$PROFILE_PATH/Bid_Sniper"
 LOG_FILE="$TEMP_DIR/download_extract_log.txt"
