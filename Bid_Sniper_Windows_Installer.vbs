@@ -9,7 +9,7 @@ tempDir = shell.ExpandEnvironmentStrings("%TEMP%")
 profilePath = shell.ExpandEnvironmentStrings("%USERPROFILE%")
 
 ' Set paths
-dropboxUrl = "https://dl.dropboxusercontent.com/scl/fi/0tx8dtk5iqkyp8g5iebk7/Bid_Sniper_win32.zip?rlkey=izl1nt0ithhhmx7vvh00c4n68&st=7wmr4vnc&dl=1&raw=1"
+dropboxUrl = "https://dl.dropboxusercontent.com/scl/fi/0tx8dtk5iqkyp8g5iebk7/Bid_Sniper_win32.zip?rlkey=izl1nt0ithhhmx7vvh00c4n68&dl=1&raw=1"
 zipFile = tempDir & "\Bid_Sniper.zip"
 extractPath = profilePath
 fullExtractPath = profilePath & "\Bid_Sniper"
