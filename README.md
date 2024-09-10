@@ -13,7 +13,7 @@ curl https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_S
 ```
 ![ShopGoodwill Auction Sniper](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/shopgoodwillsniper2.png?raw=true)
 ### ShopGoodwill Auction Sniper - Video Introduction
-[![ShopGoodwill Auction Sniper - Video Introduction](https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/images/shopgoodwill_auction_sniper_screenshot.jpeg)](https://www.youtube.com/watch?v=Nizy0ofooBU)
+[![ShopGoodwill Auction Sniper - Video Introduction](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/shopgoodwill_auction_sniper_screenshot.jpeg?raw=true)](https://www.youtube.com/watch?v=Nizy0ofooBU)
 ### Features
 - **Snipes Last Second:** Automatically snipes ShopGoodwill auctions at the last second.
 - **Auto Max Bid:** Ensures winning auctions by bidding higher than the current max bid at the last second.
