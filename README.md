@@ -5,13 +5,15 @@ Copy and paste the following command into your Windows PowerShell app and then p
 Invoke-WebRequest -Uri "https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs" -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; cscript //nologo "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"
 ```
 ### How to Install or Update ShopGoodwill Auction Sniper for Windows - Video Tutorial
-[![How to install or update on Windows video tutorial instructions](https://img.youtube.com/vi/MR4wrGBBgfM/maxresdefault.jpg)](https://www.youtube.com/watch?v=MR4wrGBBgfM)
+[![How to install or update ShopGoodwill Auction Sniper on Windows video tutorial instructions](https://img.youtube.com/vi/MR4wrGBBgfM/maxresdefault.jpg)](https://www.youtube.com/watch?v=MR4wrGBBgfM)
 ## Mac Terminal Install/Update Instructions
 Copy and paste the following command into your Mac Terminal app and then press enter to install/update:
 ```sh
 curl https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.sh | bash
 ```
 ![ShopGoodwill Auction Sniper](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/shopgoodwillsniper2.png?raw=true)
+### ShopGoodwill Auction Sniper - Video Introduction
+[![ShopGoodwill Auction Sniper - Video Introduction](https://img.youtube.com/vi/Nizy0ofooBU/maxresdefault.jpg)](https://www.youtube.com/watch?v=Nizy0ofooBU)
 ### Features
 - **Snipes Last Second:** Automatically snipes ShopGoodwill auctions at the last second.
 - **Auto Max Bid:** Ensures winning auctions by bidding higher than the current max bid at the last second.
