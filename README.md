@@ -4,6 +4,7 @@ Copy and paste the following command into your Windows PowerShell app and then p
 ```sh
 Invoke-WebRequest -Uri "https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Windows_Installer.vbs" -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; cscript //nologo "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"
 ```
+[![How to install or update on Windows video tutorial instructions](https://img.youtube.com/vi/MR4wrGBBgfM/0.jpg)](https://www.youtube.com/watch?v=MR4wrGBBgfM?autoplay=1)
 ## Mac Terminal Install/Update Instructions
 Copy and paste the following command into your Mac Terminal app and then press enter to install/update:
 ```sh
