@@ -74,7 +74,7 @@
     </style>
     <script>
         function buy(amount, description) {
-            const source = prompt("How did you hear about us: Google, Reddit, YouTube, Friend?");
+            const source = showPrompt("How did you hear about us: Google, Reddit, YouTube, Friend?");
 
             console.log('buy:', amount, description, source);
         }
@@ -180,6 +180,76 @@
             </tr>
         </table>
     </div>
+    <style>
+        #prompt-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* semi-transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            /* Ensure it's on top */
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            /* Adjust as needed */
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #user-input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        #ok-button,
+        #cancel-button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+    <div id="prompt-modal" style="display:none;">
+        <div class="modal-content">
+            <h2 id="prompt-message">Prompt</h2>
+            <input type="text" id="user-input" placeholder="Enter your input here">
+            <div>
+                <button id="ok-button">OK</button>
+                <button id="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const promptModal = document.getElementById('prompt-modal');
+        const userInput = document.getElementById('user-input');
+
+        function showPrompt(message) {
+            document.getElementById('prompt-message').textContent = message;
+            promptModal.style.display = 'flex'; // Flexbox ensures it's centered
+
+            return new Promise((resolve, reject) => {
+                document.getElementById('ok-button').onclick = () => {
+                    promptModal.style.display = 'none';
+                    resolve(userInput.value);
+                };
+                document.getElementById('cancel-button').onclick = () => {
+                    promptModal.style.display = 'none';
+                    reject();
+                };
+            });
+        }
+    </script>
 </body>
 
 </html>
