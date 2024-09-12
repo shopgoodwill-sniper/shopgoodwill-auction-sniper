@@ -74,7 +74,9 @@
     </style>
     <script>
         function buy(amount, description) {
-            console.log('buy:', amount, description)
+            const source = prompt("How did you hear about us: Google, Reddit, YouTube, Friend?");
+
+            console.log('buy:', amount, description, source);
         }
 
         function closePage() {
