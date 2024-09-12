@@ -73,10 +73,14 @@
         }
     </style>
     <script>
-        function buy(amount, description) {
-            const source = showPrompt("How did you hear about us: Google, Reddit, YouTube, Friend?");
+        async function buy(amount, description) {
+            try {
+                const source = await showPrompt("How did you hear about us: Google, Reddit, YouTube, Friend?");
 
-            console.log('buy:', amount, description, source);
+                console.log('buy:', amount, description, source);
+            } catch (error) {
+                // user cancelled so left empty on purpose
+            }
         }
 
         function closePage() {
