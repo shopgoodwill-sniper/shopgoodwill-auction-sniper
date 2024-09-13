@@ -11,6 +11,8 @@ Copy and paste the following command into your Mac Terminal app and then press e
 ```sh
 curl https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.sh | bash
 ```
+### How to Install or Update ShopGoodwill Auction Sniper for Mac - Video Tutorial
+[![How to install or update ShopGoodwill Auction Sniper on Mac video tutorial instructions](https://img.youtube.com/vi/VK2tm3c7CrY/maxresdefault.jpg)](https://www.youtube.com/watch?v=VK2tm3c7CrY)
 ## ShopGoodwill Auction Sniper - Video Introduction
 [![ShopGoodwill Auction Sniper - Video Introduction](https://github.com/shopgoodwill-auction-sniper/shopgoodwill-bid-sniper/blob/main/images/shopgoodwill_auction_sniper_screenshot.jpeg?raw=true)](https://www.youtube.com/watch?v=Nizy0ofooBU)
 ### Features
