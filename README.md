@@ -9,7 +9,7 @@ Invoke-WebRequest -Uri "https://shopgoodwill-auction-sniper.github.io/shopgoodwi
 ## Mac Terminal Install/Update Instructions
 Copy and paste the following command into your Mac Terminal app and then press enter to install/update:
 ```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && brew install curl && $(command -v /usr/local/opt/curl/bin/curl || command -v /opt/homebrew/opt/curl/bin/curl || command -v curl) https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.sh | bash
+(command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)") && brew install curl && $(command -v /usr/local/opt/curl/bin/curl || command -v /opt/homebrew/opt/curl/bin/curl || command -v curl) https://shopgoodwill-auction-sniper.github.io/shopgoodwill-bid-sniper/Bid_Sniper_Mac_Installer.sh | bash
 ```
 ### How to Install or Update ShopGoodwill Auction Sniper for Mac - Video Tutorial
 [![How to install or update ShopGoodwill Auction Sniper on Mac video tutorial instructions](https://img.youtube.com/vi/VK2tm3c7CrY/maxresdefault.jpg)](https://www.youtube.com/watch?v=VK2tm3c7CrY)
