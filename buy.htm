@@ -253,7 +253,7 @@
                     promptModal.style.display = 'none';
 
                     if (!userInput.value.trim())
-                        return reject(alert(`${message.replace('?', '').trim()} Required!`));
+                        return reject(alert('Input Required!'));
 
                     resolve(userInput.value);
                 };
@@ -262,7 +262,7 @@
                     promptModal.style.display = 'none';
 
                     if (!userInput.value.trim())
-                        return reject(alert(`${message.replace('?', '').trim()} Required!`));
+                        return reject(alert('Input Required!'));
 
                     reject();
                 };
@@ -273,7 +273,7 @@
                         promptModal.style.display = 'none';
 
                         if (!userInput.value.trim())
-                            return reject(alert(`${message.replace('?', '').trim()} Required!`));
+                            return reject(alert('Input Required!'));
 
                         resolve(userInput.value);
                     }
