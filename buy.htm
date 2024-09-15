@@ -251,7 +251,7 @@
             return new Promise((resolve, reject) => {
                 document.getElementById('ok-button').onclick = () => {
                     if (!userInput.value.trim())
-                        return reject(alert('Response Required!') || userInput.focus());
+                        return (alert('Response Required!') || userInput.focus());
 
                     promptModal.style.display = 'none';
 
@@ -260,7 +260,7 @@
 
                 document.getElementById('cancel-button').onclick = () => {
                     if (!userInput.value.trim())
-                        return reject(alert('Response Required!') || userInput.focus());
+                        return (alert('Response Required!') || userInput.focus());
 
                     promptModal.style.display = 'none';
 
@@ -271,7 +271,7 @@
                 userInput.onkeydown = (event) => {
                     if (event.key === 'Enter') {
                         if (!userInput.value.trim())
-                            return reject(alert('Response Required!') || userInput.focus());
+                            return (alert('Response Required!') || userInput.focus());
 
                         promptModal.style.display = 'none';
 
