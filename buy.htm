@@ -243,22 +243,38 @@
 
         function showPrompt(message) {
             document.getElementById('prompt-message').textContent = message;
+
             promptModal.style.display = 'flex'; // Flexbox ensures it's centered
+
             userInput.focus();
 
             return new Promise((resolve, reject) => {
                 document.getElementById('ok-button').onclick = () => {
                     promptModal.style.display = 'none';
+
+                    if (!userInput.value.trim())
+                        return reject(alert(`${message.replace('?', '').trim()} Required!`));
+
                     resolve(userInput.value);
                 };
+
                 document.getElementById('cancel-button').onclick = () => {
                     promptModal.style.display = 'none';
+
+                    if (!userInput.value.trim())
+                        return reject(alert(`${message.replace('?', '').trim()} Required!`));
+
                     reject();
                 };
+
                 // Handle Enter key press inside input field
                 userInput.onkeydown = (event) => {
                     if (event.key === 'Enter') {
                         promptModal.style.display = 'none';
+
+                        if (!userInput.value.trim())
+                            return reject(alert(`${message.replace('?', '').trim()} Required!`));
+
                         resolve(userInput.value);
                     }
                 };
