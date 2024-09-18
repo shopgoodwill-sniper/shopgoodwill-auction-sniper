@@ -31,7 +31,7 @@ Sub DownloadAndExtract()
         "Start-BitsTransfer -Source $url -Destination $zipFile" & vbCrLf & _
         "Expand-Archive -Path $zipFile -DestinationPath $extractPath -Force"
 
-    psCommand = "powershell -NoProfile -ExecutionPolicy Bypass -Command " & _
+    psCommand = "powershell -NoProfile -Command " & _
                 """& {" & downloadAndExtractScript & "} -url '" & dropboxUrl & "' -zipFile '" & zipFile & "' -extractPath '" & extractPath & "' -fullExtractPath '" & fullExtractPath & "' 2>&1 | Out-File -FilePath '" & logFile & "' -Encoding utf8"""
 
     shell.Run psCommand, 1, True
