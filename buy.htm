@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>License Page</title>
     <style>
+        :root {
+            --table-border-radius: 10px;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -28,8 +32,9 @@
 
         table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
             margin: 50px 0;
+            border-spacing: 0;
         }
 
         th,
@@ -57,6 +62,19 @@
             padding: 5px;
         }
 
+        th:first-child {
+            border-top-left-radius: var(--table-border-radius);
+            border-top-right-radius: var(--table-border-radius);
+        }
+
+        tr:last-child td:first-child {
+            border-bottom-left-radius: var(--table-border-radius);
+        }
+
+        td:last-child {
+            border-bottom-right-radius: var(--table-border-radius);
+        }
+
         button {
             background: #28a745;
             color: #fff;
@@ -72,6 +90,15 @@
             background: #218838;
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-91X543LVHK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-91X543LVHK');
+    </script>
     <script>
         async function buy(amount, description) {
             try {
@@ -93,7 +120,7 @@
     <div class="container">
         <h1>Bid Sniper License</h1>
         <table>
-            <tr>
+            <!-- <tr>
                 <th colspan="5">Pay-Per-Snipe</th>
             </tr>
             <tr>
@@ -135,9 +162,9 @@
             </tr>
             <tr>
                 <td colspan="5"><br /><br /><br /></td>
-            </tr>
+            </tr> -->
             <tr>
-                <th colspan="5">Unlimited Snipes</th>
+                <th colspan="4">Unlimited Snipes</th>
             </tr>
             <tr>
                 <td>
@@ -154,13 +181,13 @@
                     </ul>
                     <button onclick="buy('24.99', '3 Months Unlimited')">Buy</button>
                 </td>
-                <td>
+                <!-- <td>
                     $49.99/Semi-Annual
                     <ul>
                         <li>6 Months</li>
                     </ul>
                     <button onclick="buy('49.99', '6 Months Unlimited')">Buy</button>
-                </td>
+                </td> -->
                 <td>
                     $99.99/Annual
                     <ul>
@@ -176,12 +203,12 @@
                     <button onclick="buy('249.99', 'Life-Time Unlimited')">Buy</button>
                 </td>
             </tr>
-            <tr>
-                <td colspan="5">
+            <!-- <tr>
+                <td colspan="4">
                     <br /><br /><br />
                     <button onclick="closePage()">Close</button>
                 </td>
-            </tr>
+            </tr> -->
         </table>
     </div>
     <style>
