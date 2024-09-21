@@ -285,9 +285,6 @@
                 };
 
                 document.getElementById('cancel-button').onclick = () => {
-                    if (!userInput.value.trim())
-                        return (alert('Response Required!') || userInput.focus());
-
                     promptModal.style.display = 'none';
 
                     reject();
