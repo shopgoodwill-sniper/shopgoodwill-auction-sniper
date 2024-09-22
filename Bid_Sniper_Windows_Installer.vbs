@@ -1,3 +1,8 @@
+If Not WScript.Arguments.Named.Exists("elevated") Then
+    CreateObject("Shell.Application").ShellExecute "wscript.exe", """" & WScript.ScriptFullName & """ /elevated", "", "runas", 1
+    WScript.Quit
+End If
+
 Dim shell, fso, tempDir, profilePath, dropboxUrl, zipFile, extractPath, fullExtractPath, logFile
 
 ' Initialize objects
