@@ -1,7 +1,18 @@
-If Not WScript.Arguments.Named.Exists("elevated") Then
-    CreateObject("Shell.Application").ShellExecute "wscript.exe", """" & WScript.ScriptFullName & """ /elevated", "", "runas", 1
-    WScript.Quit
-End If
+' Check if the script is running as administrator
+Function IsAdmin()
+    Set objShell = CreateObject("Shell.Application")
+    IsAdmin = Not objShell.IsRestricted("System")
+End Function
+
+Sub ElevateIfNotAdmin()
+    ' Check if the script is running as an administrator
+    If Not IsAdmin() Then
+        CreateObject("Shell.Application").ShellExecute "wscript.exe", """" & WScript.ScriptFullName & """", "", "runas", 1
+        WScript.Quit
+    End If
+End Sub
+
+Call ElevateIfNotAdmin()
 
 Dim shell, fso, tempDir, profilePath, dropboxUrl, zipFile, extractPath, fullExtractPath, logFile
 
@@ -26,6 +37,25 @@ If fso.FileExists(logFile) Then fso.DeleteFile logFile, True
 Sub DisplayMessage(message)
     MsgBox message
 End Sub
+
+' Function to check for errors by reading the log file
+Function CheckForErrors()
+    If fso.FileExists(logFile) Then
+        Dim logFileContent, logContent
+        Set logFileContent = fso.OpenTextFile(logFile, 1, False)
+        logContent = logFileContent.ReadAll
+        logFileContent.Close
+        
+        ' Check if log contains "Exception" or any typical error message
+        If InStr(logContent, "Exception") > 0 Or InStr(logContent, "Error") > 0 Then
+            CheckForErrors = True
+        Else
+            CheckForErrors = False
+        End If
+    Else
+        CheckForErrors = True
+    End If
+End Function
 
 Sub DownloadAndExtract()
     Dim downloadAndExtractScript, psCommand
@@ -96,14 +126,14 @@ End Sub
 ' Main script execution
 DisplayMessage "This script will now download and install Bid Sniper and create a desktop shortcut for it. PowerShell will open and close during this process, which is normal."
 
-DownloadAndExtract()
+Call DownloadAndExtract()
 
 Dim logContent
 logContent = ReadLogFile()
 
-If InStr(logContent, "Exception") = 0 And InstallationSuccessful() Then
-    CreateLaunchScript()
-    CreateDesktopShortcut()
+If Not CheckForErrors() And InstallationSuccessful() Then
+    Call CreateLaunchScript()
+    Call CreateDesktopShortcut()
     DisplayMessage "Bid Sniper is now installed. You can launch it from the desktop shortcut."
 Else
     DisplayMessage "An error occurred during the installation: " & vbCrLf & logContent
