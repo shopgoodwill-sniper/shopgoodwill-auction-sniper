@@ -1,19 +1,3 @@
-' Check if the script is running as administrator
-Function IsAdmin()
-    Set objShell = CreateObject("Shell.Application")
-    IsAdmin = Not objShell.IsRestricted("System")
-End Function
-
-Sub ElevateIfNotAdmin()
-    ' Check if the script is running as an administrator
-    If Not IsAdmin() Then
-        CreateObject("Shell.Application").ShellExecute "wscript.exe", """" & WScript.ScriptFullName & """", "", "runas", 1
-        WScript.Quit
-    End If
-End Sub
-
-Call ElevateIfNotAdmin()
-
 Dim shell, fso, tempDir, profilePath, dropboxUrl, zipFile, extractPath, fullExtractPath, logFile
 
 ' Initialize objects
@@ -33,6 +17,31 @@ logFile = tempDir & "\download_extract_log.txt"
 
 ' Delete log file if it exists
 If fso.FileExists(logFile) Then fso.DeleteFile logFile, True
+
+' Check if the script is running as administrator
+Function IsAdmin()
+    Dim adminStatus
+    
+    ' Run the net session command and check its exit code
+    adminStatus = shell.Run("net session", 0, True)
+    
+    ' If the command was successful (exit code 0), return True, else False
+    If adminStatus = 0 Then
+        IsAdmin = True
+    Else
+        IsAdmin = False
+    End If
+End Function
+
+Sub ElevateIfNotAdmin()
+    ' Check if the script is running as an administrator
+    If Not IsAdmin() Then
+        CreateObject("Shell.Application").ShellExecute "wscript.exe", """" & WScript.ScriptFullName & """", "", "runas", 1
+        WScript.Quit
+    End If
+End Sub
+
+Call ElevateIfNotAdmin()
 
 Sub DisplayMessage(message)
     MsgBox message
