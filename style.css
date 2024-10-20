@@ -1,0 +1,92 @@
+body {
+    background: linear-gradient(135deg, #3d72a3, #1e3c72);
+    /* Smooth blue gradient */
+    color: white;
+    text-align: center;
+    font-family: "Work Sans", sans-serif;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer a {
+    text-decoration: underline;
+}
+
+footer a:hover {
+    text-decoration: none;
+}
+
+ul.download {
+    width: 75%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+ul.download>li {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0 1em;
+    padding: 0;
+}
+
+pre {
+    width: 30vw;
+    border-radius: 5px;
+}
+
+.copy-btn {
+    font-size: xx-large;
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.25em 1em;
+}
+
+footer ul {
+    padding: 0;
+    margin: 1em auto;
+}
+
+footer ul li {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0 0.5em;
+}
+
+.features-list {
+    width: 75%;
+    list-style: none;
+    /* Removes default list styling */
+    padding: 0;
+    margin: 0 auto;
+    font-family: "Work Sans", sans-serif;
+    font-size: x-large;
+}
+
+.features-list li {
+    margin: 1em 0;
+    /* Adds space between each item */
+}
+
+.checkmark {
+    color: #4CAF50;
+    /* Green checkmark */
+    font-size: 18px;
+    margin-right: 10px;
+    /* Space between checkmark and text */
+}
+
+.features-list strong {
+    color: lightgray;
+    /* Strong text color */
+    font-weight: bold;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopGoodwill Auction Sniper</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Prism.js CSS for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.css" rel="stylesheet" />
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-powershell.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-240SMDTJLW"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-240SMDTJLW');
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16678923977">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-16678923977');
+    </script>
+    <script src="site.js"></script>
+</head>
+
+<body>
+    <h1>ShopGoodwill Auction Sniper</h1>
+    <p>
+        ShopGoodwill Sniper is an auto-pilot auction bid sniping software for Windows and Mac that enables users to
+        snipe their bids simultaneously at the last second of auctions.
+    </p>
+    <ul class="download">
+        <li>
+            <img src="images/auctionsniper-windows.png" alt="">
+            <h2>Windows PowerShell <a href="https://www.youtube.com/watch?v=MR4wrGBBgfM">?</a></h2>
+            <pre><code id="windows-command" class="language-powershell">Invoke-WebRequest -Uri "https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid_Sniper_Windows_Installer.vbs" -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; wscript "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"</code></pre>
+            <button class="copy-btn" onclick="copyToClipboard('#windows-command')">Copy Install/Update Command</button>
+        </li>
+        <li>
+            <img src="images/auctionsniper-mac.png" alt="">
+            <h2>Mac Terminal <a href="https://www.youtube.com/watch?v=VK2tm3c7CrY">?</a></h2>
+            <pre><code id="mac-command" class="language-bash">curl -fsSL https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid_Sniper_Mac_Installer.sh | bash || { (command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)") && brew install curl && $(command -v /usr/local/opt/curl/bin/curl || command -v /opt/homebrew/opt/curl/bin/curl) -fsSL https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid_Sniper_Mac_Installer.sh | bash; }</code></pre>
+            <button class="copy-btn" onclick="copyToClipboard('#mac-command')">Copy Install/Update Command</button>
+        </li>
+    </ul>
+    <br>
+    <a href="https://www.youtube.com/watch?v=Nizy0ofooBU">
+        <img src="images/shopgoodwill_auction_sniper_screenshot.jpeg" alt="" width="75%">
+    </a>
+    <ul class="features-list">
+        <li><span class="checkmark">&#10003;</span><strong>Snipes Last Second:</strong> Automatically snipes
+            ShopGoodwill auctions at the last second.</li>
+        <li><span class="checkmark">&#10003;</span><strong>Auto Max Bid:</strong> Ensures winning auctions by bidding
+            higher than the current max bid at the last second.</li>
+        <li><span class="checkmark">&#10003;</span><strong>Multi-Auction Sniping:</strong> Snipe multiple auctions
+            simultaneously.</li>
+        <li><span class="checkmark">&#10003;</span><strong>Password Security:</strong> Self-hosted setup; never share
+            your password with us.</li>
+        <li><span class="checkmark">&#10003;</span><strong>Background Sniping:</strong> Minimize to system tray for
+            background sniping.</li>
+        <li><span class="checkmark">&#10003;</span><strong>Efficient Bid Scheduling:</strong> Organize and manage bids
+            with an intuitive interface.</li>
+        <li><span class="checkmark">&#10003;</span><strong>Real-Time Snipe Monitoring:</strong> Track bids with
+            built-in status indicators.</li>
+        <li><span class="checkmark">&#10003;</span><strong>Embedded Auction Browser:</strong> Add snipes quickly via an
+            embedded ShopGoodwill browser.</li>
+        <li><span class="checkmark">&#10003;</span><strong>Sound Effects:</strong> Get themed audio cues for important
+            sniping events.</li>
+        <li><span class="checkmark">&#10003;</span><strong>Intuitive Interface:</strong> Full-screen, animated
+            interface for effortless navigation.</li>
+        <li><span class="checkmark">&#10003;</span><strong>Cross-Platform Compatibility:</strong> Compatible with both
+            Windows and Mac.</li>
+    </ul>
+    <footer>
+        <ul>
+            <li>
+                <a href="https://www.youtube.com/@shopgoodwill-sniper">YouTube</a>
+            </li>
+            <li>
+                <a href="https://github.com/shopgoodwill-sniper/shopgoodwill-auction-sniper/issues">Support</a>
+            </li>
+            <li>
+                <a href="https://github.com/shopgoodwill-sniper/shopgoodwill-auction-sniper/discussions">Forum</a>
+            </li>
+            <li>
+                <a href="mailto:help@snipeable.com?subject=Inquiry">Contact</a>
+            </li>
+        </ul>
+        &copy;
+        Copyright
+        <script>document.write(new Date().getFullYear());</script>
+    </footer>
+</body>
+
+</html>
