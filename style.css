@@ -33,13 +33,40 @@ ul.download {
 ul.download>li {
     display: inline-block;
     list-style-type: none;
-    margin: 0 1em;
+    margin: 0 0.5em 1em 0.5em;
     padding: 0;
 }
 
 pre {
-    width: 30em;
+    width: 30vw;
     border-radius: 5px;
+}
+
+/* Target portrait and landscape orientations for all iPads */
+@media (min-width: 768px) and (max-width: 1024px),
+/* landscape */
+(max-width: 768px)
+/* portrait */
+    {
+
+    pre {
+        width: 65vw;
+    }
+}
+
+/* Target all iPhones in both portrait and landscape orientations */
+@media (max-width: 480px),
+/* smaller iPhones */
+(min-width: 481px) and (max-width: 812px)
+/* larger iPhones */
+    {
+    ul.download>li {
+        margin-left: 0;
+    }
+
+    pre {
+        width: 65vw;
+    }
 }
 
 .copy-btn {
