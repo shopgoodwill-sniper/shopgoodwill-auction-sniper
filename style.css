@@ -42,26 +42,14 @@ pre {
     border-radius: 5px;
 }
 
-/* Target portrait and landscape orientations for all iPads */
+/* Target all iPhones & iPads in both portrait and landscape orientations */
 @media (min-width: 768px) and (max-width: 1024px),
-/* landscape */
-(max-width: 768px)
-/* portrait */
-    {
-
-    pre {
-        width: 65vw;
-    }
-}
-
-/* Target all iPhones in both portrait and landscape orientations */
-@media (max-width: 480px),
-/* smaller iPhones */
-(min-width: 481px) and (max-width: 812px)
-/* larger iPhones */
-    {
+(max-width: 480px),
+(min-width: 481px) and (max-width: 812px),
+(max-width: 768px) {
     ul.download>li {
         margin-left: 0;
+        margin-right: 0;
     }
 
     pre {
