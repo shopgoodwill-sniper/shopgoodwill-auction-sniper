@@ -8,12 +8,12 @@ body {
 
 a,
 a:visited {
-    text-decoration: none;
+    text-decoration: underline;
     color: white;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 footer a {
