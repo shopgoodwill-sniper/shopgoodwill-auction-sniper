@@ -58,6 +58,22 @@ installation_successful() {
     fi
 }
 
+# Function to close processes containing "Bid_Sniper"
+close_bid_sniper() {
+    # Get the script's own PID
+    local self_pid=$$
+    
+    # Find processes with "Bid_Sniper" in their name, exclude this script's PID, and extract their PIDs
+    local sniper_pids
+    sniper_pids=$(pgrep -f "/Bid_Sniper/" | grep -v "$self_pid")
+    
+    if [ -n "$sniper_pids" ]; then
+        echo "Closing the following processes with 'Bid_Sniper':"
+        echo "$sniper_pids"
+        echo "$sniper_pids" | xargs kill -9
+    fi
+}
+
 # Create launch script function
 create_launch_script() {
     mkdir -p "$APP_PATH/Contents/MacOS"
@@ -112,6 +128,8 @@ EOF
 cleanup_previous_installation
 
 display_message "This script will now download and install Bid Sniper and create a desktop shortcut for it."
+
+close_bid_sniper
 
 download_and_extract
 
