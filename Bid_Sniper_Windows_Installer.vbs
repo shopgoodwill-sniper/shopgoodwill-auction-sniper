@@ -66,6 +66,58 @@ Function CheckForErrors()
     End If
 End Function
 
+Sub KillBidSniperProcesses()
+    Dim objWMIService, colProcesses, objProcess, scriptName, currentPID
+
+    On Error Resume Next
+
+    ' Get the current script's name
+    scriptName = WScript.ScriptName
+
+    ' Connect to WMI service
+    Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
+    If Err.Number <> 0 Then
+        MsgBox "Error: Unable to connect to WMI service. Ensure WMI is enabled and you have administrative privileges.", vbCritical
+        Exit Sub
+    End If
+
+    ' Retrieve the current script's PID
+    currentPID = -1
+    Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process WHERE Name = 'wscript.exe' OR Name = 'cscript.exe'")
+    For Each objProcess In colProcesses
+        If InStr(LCase(objProcess.CommandLine), LCase(scriptName)) > 0 Then
+            currentPID = objProcess.ProcessId
+            Exit For
+        End If
+    Next
+
+    ' If the current PID could not be determined, exit safely
+    If currentPID = -1 Then
+        MsgBox "Error: Unable to determine the current script's process ID.", vbCritical
+        Exit Sub
+    End If
+
+    ' Find and terminate all processes containing "Bid_Sniper" in their name
+    Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process WHERE Name LIKE '%Bid_Sniper%'")
+    If Err.Number <> 0 Then
+        MsgBox "Error: Unable to query processes. Ensure you have administrative privileges.", vbCritical
+        Exit Sub
+    End If
+
+    For Each objProcess In colProcesses
+        ' Exclude the current script process
+        If objProcess.ProcessId <> currentPID Then
+            objProcess.Terminate
+        End If
+    Next
+
+    ' Clean up objects
+    Set colProcesses = Nothing
+    Set objWMIService = Nothing
+
+    On Error GoTo 0
+End Sub
+
 Sub DownloadAndExtract()
     Dim downloadAndExtractScript, psCommand
     downloadAndExtractScript = _
@@ -134,6 +186,8 @@ End Sub
 
 ' Main script execution
 DisplayMessage "This script will now download and install Bid Sniper and create a desktop shortcut for it. PowerShell will open and close during this process, which is normal."
+
+Call KillBidSniperProcesses()
 
 Call DownloadAndExtract()
 
