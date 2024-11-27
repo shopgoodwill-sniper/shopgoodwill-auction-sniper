@@ -1,8 +1,8 @@
 # Shopgoodwill Sniper
-## Windows PowerShell Install/Update Instructions
-Copy and paste the following command into your Windows PowerShell app and then press enter to install/update:
+## Windows Command Prompt Install/Update Instructions
+Copy and paste the following command into your Windows Command Prompt app and then press enter to install/update:
 ```sh
-Invoke-WebRequest -Uri "https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid_Sniper_Windows_Installer.vbs" -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; wscript "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"
+curl -o "%TEMP%\Bid_Sniper_Windows_Installer.vbs" "https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid_Sniper_Windows_Installer.vbs" && wscript "%TEMP%\Bid_Sniper_Windows_Installer.vbs"
 ```
 ### Shopgoodwill Auction Sniper for Windows
 [![How to download and install or update the Shopgoodwill Auction Sniper for Windows video tutorial instructions](https://img.youtube.com/vi/MR4wrGBBgfM/maxresdefault.jpg)](https://www.youtube.com/watch?v=MR4wrGBBgfM)

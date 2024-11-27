@@ -158,11 +158,11 @@
             <ul class="download">
                 <li>
                     <img src="images/auctionsniper-windows.png" alt="Shopgoodwill Auction Sniper for Windows">
-                    <h2>Windows PowerShell <a href="https://www.youtube.com/watch?v=MR4wrGBBgfM" target="_blank"
+                    <h2>Windows Command Prompt <a href="https://www.youtube.com/watch?v=MR4wrGBBgfM" target="_blank"
                             rel="noopener noreferrer"
                             title="How to download and install or update the Shopgoodwill Auction Sniper for Windows">?</a>
                     </h2>
-                    <pre><code id="windows-command" class="language-powershell">Invoke-WebRequest -Uri "https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid_Sniper_Windows_Installer.vbs" -OutFile "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"; wscript "$env:TEMP\Bid_Sniper_Windows_Installer.vbs"</code></pre>
+                    <pre><code id="windows-command" class="language-powershell">curl -o "%TEMP%\Bid_Sniper_Windows_Installer.vbs" "https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid_Sniper_Windows_Installer.vbs" && wscript "%TEMP%\Bid_Sniper_Windows_Installer.vbs"</code></pre>
                     <button class="copy-btn" onclick="copyToClipboard('#windows-command')">Copy Install/Update
                         Command</button>
                 </li>
