@@ -7,7 +7,7 @@ curl -o "%TEMP%\Bid_Sniper_Windows_Installer.vbs" "https://shopgoodwill-sniper.g
 ### Shopgoodwill Auction Sniper for Windows
 [![How to download and install or update the Shopgoodwill Auction Sniper for Windows video tutorial instructions](https://img.youtube.com/vi/MR4wrGBBgfM/maxresdefault.jpg)](https://www.youtube.com/watch?v=MR4wrGBBgfM)
 ## Mac Terminal Install/Update Instructions
-Copy and paste the following command into your Mac Terminal app and then press enter to install/update:
+Paste this command into your Mac Terminal and press Enter to install or update:
 ```sh
 curl -fsSL https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid_Sniper_Mac_Installer.sh | bash || { (command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)") && brew install curl && $(command -v /usr/local/opt/curl/bin/curl || command -v /opt/homebrew/opt/curl/bin/curl) -fsSL https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid_Sniper_Mac_Installer.sh | bash; }
 ```
