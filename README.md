@@ -1,6 +1,6 @@
 # Shopgoodwill Sniper
 ## Windows Command Prompt Install/Update Instructions
-Copy and paste the following command into your Windows Command Prompt app and then press enter to install/update:
+Paste the following command into the Windows Command Prompt and press Enter to install or update:
 ```sh
 curl -o "%TEMP%\Bid_Sniper_Windows_Installer.vbs" "https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid_Sniper_Windows_Installer.vbs" && wscript "%TEMP%\Bid_Sniper_Windows_Installer.vbs"
 ```
