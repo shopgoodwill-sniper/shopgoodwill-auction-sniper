@@ -66,13 +66,10 @@ Function CheckForErrors()
     End If
 End Function
 
-Sub KillBidSniperProcesses()
-    Dim objWMIService, colProcesses, objProcess, scriptName, currentPID
+Sub KillProcessesInBidSniperPath()
+    Dim objWMIService, colProcesses, objProcess, exePath
 
     On Error Resume Next
-
-    ' Get the current script's name
-    scriptName = WScript.ScriptName
 
     ' Connect to WMI service
     Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
@@ -81,32 +78,21 @@ Sub KillBidSniperProcesses()
         Exit Sub
     End If
 
-    ' Retrieve the current script's PID
-    currentPID = -1
-    Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process WHERE Name = 'wscript.exe' OR Name = 'cscript.exe'")
-    For Each objProcess In colProcesses
-        If InStr(LCase(objProcess.CommandLine), LCase(scriptName)) > 0 Then
-            currentPID = objProcess.ProcessId
-            Exit For
-        End If
-    Next
-
-    ' If the current PID could not be determined, exit safely
-    If currentPID = -1 Then
-        MsgBox "Error: Unable to determine the current script's process ID.", vbCritical
-        Exit Sub
-    End If
-
-    ' Query for "Electron" processes and filter by CommandLine
-    Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process WHERE Name = 'electron.exe'")
+    ' Query for all processes
+    Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process")
     If Err.Number <> 0 Then
         MsgBox "Error: Unable to query processes. Ensure you have administrative privileges.", vbCritical
         Exit Sub
     End If
 
+    ' Loop through all processes and terminate those in "\Bid_Sniper\" path
     For Each objProcess In colProcesses
-        ' Check if "Bid Sniper" is in the CommandLine and exclude the current script process
-        If objProcess.ProcessId <> currentPID And InStr(LCase(objProcess.CommandLine), "bid sniper") > 0 Then
+        exePath = ""
+        On Error Resume Next
+        exePath = objProcess.ExecutablePath
+        On Error GoTo 0
+
+        If InStr(LCase(exePath), "\bid_sniper\") > 0 Then
             objProcess.Terminate
         End If
     Next
