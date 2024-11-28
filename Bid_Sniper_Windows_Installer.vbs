@@ -66,7 +66,7 @@ Function CheckForErrors()
     End If
 End Function
 
-Sub KillProcessesInBidSniperPath()
+Sub KillRunningAppProcesses()
     Dim objWMIService, colProcesses, objProcess, exePath
 
     On Error Resume Next
@@ -170,7 +170,7 @@ Sub CreateDesktopShortcut()
     End With
 End Sub
 
-Call KillBidSniperProcesses()
+Call KillRunningAppProcesses()
 
 ' Main script execution
 DisplayMessage "This script will now download and install Bid Sniper and create a desktop shortcut for it. PowerShell will open and close during this process, which is normal."
