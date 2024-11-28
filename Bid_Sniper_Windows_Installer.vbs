@@ -97,16 +97,16 @@ Sub KillBidSniperProcesses()
         Exit Sub
     End If
 
-    ' Find and terminate all processes containing "Bid_Sniper" in their name
-    Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process WHERE Name LIKE '%Bid_Sniper%'")
+    ' Query for "Electron" processes and filter by CommandLine
+    Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process WHERE Name = 'electron.exe'")
     If Err.Number <> 0 Then
         MsgBox "Error: Unable to query processes. Ensure you have administrative privileges.", vbCritical
         Exit Sub
     End If
 
     For Each objProcess In colProcesses
-        ' Exclude the current script process
-        If objProcess.ProcessId <> currentPID Then
+        ' Check if "Bid Sniper" is in the CommandLine and exclude the current script process
+        If objProcess.ProcessId <> currentPID And InStr(LCase(objProcess.CommandLine), "bid sniper") > 0 Then
             objProcess.Terminate
         End If
     Next
@@ -184,10 +184,10 @@ Sub CreateDesktopShortcut()
     End With
 End Sub
 
+Call KillBidSniperProcesses()
+
 ' Main script execution
 DisplayMessage "This script will now download and install Bid Sniper and create a desktop shortcut for it. PowerShell will open and close during this process, which is normal."
-
-Call KillBidSniperProcesses()
 
 Call DownloadAndExtract()
 
