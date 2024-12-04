@@ -28,6 +28,6 @@ curl -fsSL https://shopgoodwill-sniper.github.io/shopgoodwill-auction-sniper/Bid
 - **Intuitive Interface:** Full-screen, animated interface for effortless navigation.
 - **Cross-Platform Compatibility:** Compatible with both Windows and Mac.
 #### Hire Us
-Hire us for your next project for only $25 an hour at [BestSoftwareDeveloper.com](https://bestsoftwaredeveloper.com)!
+Hire us for your next project for only $25 an hour at [BestSoftwareDeveloper.com](https://bestsoftwaredeveloper.com/)!
 ##### Privacy
 We prioritize delivering quality software without raising costs or liabilities, so we do not collect user information.
