@@ -66,6 +66,44 @@ Function CheckForErrors()
     End If
 End Function
 
+'Sub KillRunningAppProcesses()
+'    Dim objWMIService, colProcesses, objProcess, exePath
+'
+'    On Error Resume Next
+'
+'    ' Connect to WMI service
+'    Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
+'    If Err.Number <> 0 Then
+'        MsgBox "Error: Unable to connect to WMI service. Ensure WMI is enabled and you have administrative privileges.", vbCritical
+'        Exit Sub
+'    End If
+'
+'    ' Query for all processes
+'    Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process")
+'    If Err.Number <> 0 Then
+'        MsgBox "Error: Unable to query processes. Ensure you have administrative privileges.", vbCritical
+'        Exit Sub
+'    End If
+'
+'    ' Loop through all processes and terminate those in "\Bid_Sniper\" path
+'    For Each objProcess In colProcesses
+'        exePath = ""
+'        On Error Resume Next
+'        exePath = objProcess.ExecutablePath
+'        On Error GoTo 0
+'
+'        If InStr(LCase(exePath), "\bid_sniper\") > 0 Then
+'            objProcess.Terminate
+'        End If
+'    Next
+'
+'    ' Clean up objects
+'    Set colProcesses = Nothing
+'    Set objWMIService = Nothing
+'
+'    On Error GoTo 0
+'End Sub
+
 Sub KillRunningAppProcesses()
     Dim objWMIService, colProcesses, objProcess, exePath
 
@@ -92,8 +130,16 @@ Sub KillRunningAppProcesses()
         exePath = objProcess.ExecutablePath
         On Error GoTo 0
 
-        If InStr(LCase(exePath), "\bid_sniper\") > 0 Then
-            objProcess.Terminate
+        If Not IsNull(exePath) And exePath <> "" Then
+            If InStr(LCase(exePath), "\bid_sniper\") > 0 Then
+                On Error Resume Next
+                objProcess.Terminate
+                If Err.Number <> 0 Then
+                    MsgBox "Error terminating process: " & Err.Description, vbExclamation
+                    Err.Clear
+                End If
+                On Error GoTo 0
+            End If
         End If
     Next
 
