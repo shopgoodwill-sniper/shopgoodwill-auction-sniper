@@ -115,11 +115,19 @@
                 window.zelle = document.createElement('div');
 
                 window.zelle.innerHTML = `
-                    <h1>Zelle Payment</h1>
+                    <h2>Zelle Payment</h2>
                     Send payment to 
                 `;
 
+                window.zelle.style.position = 'fixed';
+                window.zelle.style.top = '50%';
+                window.zelle.style.left = '50%';
+                window.zelle.style.transform = 'translate(-50%, -50%)';
+                window.zelle.style.border = '0.5em solid black';
+                window.zelle.style.backgroundColor = 'white';
+                window.zelle.style.zIndex = '500';
                 window.zelle.style.display = 'block';
+                window.zelle.style.borderRadius = '0.5em';
 
                 document.body.appendChild(window.zelle);
             } else
