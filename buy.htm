@@ -103,9 +103,27 @@
                 const source = await showPrompt("How did you hear about us: Google, Reddit, YouTube, Friend?");
 
                 console.log('buy:', amount, description, source);
+
+                zelle();
             } catch (error) {
                 // user cancelled so left empty on purpose
             }
+        }
+
+        function zelle() {
+            if (!window.zelle) {
+                window.zelle = document.createElement('div');
+
+                window.zelle.innerHTML = `
+                    <h1>Zelle Payment</h1>
+                    Send payment to 
+                `;
+
+                window.zelle.style.display = 'block';
+
+                document.body.appendChild(window.zelle);
+            } else
+                window.zelle.style.display = 'block';
         }
 
         function closePage() {
