@@ -104,30 +104,47 @@
 
                 console.log('buy:', amount, description, source);
 
-                zelle();
+                _zelle();
             } catch (error) {
                 // user cancelled so left empty on purpose
             }
         }
 
-        function zelle() {
+        function _zelle() {
             if (!window.zelle) {
                 window.zelle = document.createElement('div');
 
                 window.zelle.innerHTML = `
-                    <h2>Zelle Payment</h2>
-                    Send payment to 
+                    <a class="close-x" href="#" onclick="javascript: this.parentNode.style.display = 'none';" style="float: right; text-decoration: none; margin-right: -1.4em;">X</a>
+                    <h2>Pay With Zelle</h2>
+                    <img alt="Scan me!"
+                        src="data:image/png;base64,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"
+                        style="margin:auto">
+                    <br>
+                    <br>
+                    Scan the QR code with your Zelle/banking app or
+                    <b>
+                        simply send the Zelle payment to our phone
+                        number at:
+                        <br>
+                        (310) 923-5603
+                    </b>
                 `;
 
+                window.zelle.style.width = '250px';
                 window.zelle.style.position = 'fixed';
                 window.zelle.style.top = '50%';
                 window.zelle.style.left = '50%';
                 window.zelle.style.transform = 'translate(-50%, -50%)';
-                window.zelle.style.border = '0.5em solid black';
+                window.zelle.style.border = '0.25em solid #333';
                 window.zelle.style.backgroundColor = 'white';
                 window.zelle.style.zIndex = '500';
                 window.zelle.style.display = 'block';
                 window.zelle.style.borderRadius = '0.5em';
+                window.zelle.style.padding = '1.5em';
+                window.zelle.style.paddingTop = '0';
+                window.zelle.style.textAlign = 'center';
+                window.zelle.style.fontSize = 'larger';
 
                 document.body.appendChild(window.zelle);
             } else
