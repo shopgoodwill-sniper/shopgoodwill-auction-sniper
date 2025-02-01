@@ -104,9 +104,9 @@
     <script>
         async function buy(amount, description) {
             try {
-                const source = await showPrompt("How did you hear about us: Google, Reddit, YouTube, Friend?");
+                // const source = await showPrompt("How did you hear about us: Google, Reddit, YouTube, Friend?");
 
-                console.log('buy:', amount, description, source);
+                console.log('buy:', amount, description);
 
                 _zelle(amount);
             } catch (error) {
