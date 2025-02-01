@@ -150,7 +150,7 @@
                 (310) 923-5603
                 <br>
                 <br>
-                <form action="" method="post" onsubmit="return verifyPayment(${amount});">
+                <form action="" method="post" onsubmit="return verifyPayment();">
                     <input id="verifyName" type="text" value="" placeholder="Enter Your Zelle Name" style="display:block; text-align: center; margin: auto; margin-bottom: 2.5px;">
                     <button style="width: 100%; display:block;">Verify</button>
                 </form>
@@ -161,7 +161,7 @@
             window.zelle.style.display = 'block';
         }
 
-        function verifyPayment(amount) {
+        function verifyPayment() {
             console.log('verifyPayment:', document.getElementById('verifyName').value);
 
             return false;
