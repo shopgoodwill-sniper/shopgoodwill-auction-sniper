@@ -60,6 +60,7 @@
                     throw new Error(data.data);
                 else if (typeof data?.data === 'object') {
                     document.getElementById("btc-address").innerText = data.data.bitcoinAddress;
+                    document.getElementById("btc-qr").src = `https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=${data.data.bitcoinAddress}`;
 
                     console.log("Response:", data.data);
                 }
@@ -94,7 +95,7 @@
         <h4>Add Funds via Bitcoin</h4>
         <p>Scan the QR code below with your Bitcoin app to deposit funds:</p>
 
-        <img src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
+        <img id="btc-qr" src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
             alt="Bitcoin QR Code" class="img-fluid mb-3" width="200">
 
         <p><strong>Bitcoin Address:</strong></p>
