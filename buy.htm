@@ -55,8 +55,13 @@
                     throw new Error(`HTTP error! Status: ${response.status}`);
 
                 const data = await response.json();
-                console.log("Response:", data);
-                return data;
+
+                if (typeof data?.data === 'string')
+                    throw new Error(data);
+                else if (typeof data?.data === 'object')
+                    console.log("Response:", data.data);
+
+                return data?.data;
             } catch (error) {
                 console.error("Error:", error);
 
