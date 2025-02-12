@@ -57,9 +57,12 @@
                 const data = await response.json();
 
                 if (typeof data?.data === 'string')
-                    throw new Error(data);
-                else if (typeof data?.data === 'object')
+                    throw new Error(data.data);
+                else if (typeof data?.data === 'object') {
+                    document.getElementById("btc-address").innerText = data.data.bitcoinAddress;
+
                     console.log("Response:", data.data);
+                }
 
                 return data?.data;
             } catch (error) {
