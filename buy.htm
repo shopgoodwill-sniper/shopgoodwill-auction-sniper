@@ -81,6 +81,8 @@
                 else if (typeof data?.data === 'object') {
                     document.getElementById("btc-address").innerText = data.data.bitcoinAddress;
                     document.getElementById("btc-qr").src = `https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=${data.data.bitcoinAddress}`;
+
+                    updateBalance(data.data.balance);
                 }
 
                 return data?.data;
