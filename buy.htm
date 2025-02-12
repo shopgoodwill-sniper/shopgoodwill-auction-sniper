@@ -35,6 +35,34 @@
                 console.error("Failed to copy address:", err);
             });
         }
+
+        async function user() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            if (!urlParams.has('u'))
+                return alert('You are using an outdated version of this software, please update to the latest version on Snipeable.com!');
+
+            try {
+                const response = await fetch("https://server-production-b9a2.up.railway.app/u", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: urlParams.toString() // Reuse urlParams directly
+                });
+
+                if (!response.ok)
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+
+                const data = await response.json();
+                console.log("Response:", data);
+                return data;
+            } catch (error) {
+                console.error("Error:", error);
+
+                alert(error.message || String(error));
+            }
+        }
     </script>
 </head>
 
@@ -75,7 +103,7 @@
     </div>
 
     <script>
-
+        user();
     </script>
 </body>
 
