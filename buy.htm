@@ -26,165 +26,351 @@
             --light-color: #f8f9fa;
         }
 
+        html,
         body {
+            height: 100%;
             background-color: #f8f9fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            overflow-y: auto;
+            overflow: auto;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .main-container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 1rem;
         }
 
-        .top-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .card-container {
+            display: flex;
+            justify-content: space-between;
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .balance-card {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            height: 100%;
+            border-radius: 10px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 114, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .btc-card {
+            flex: 1;
             background-color: white;
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
+            border-radius: 10px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         #balance {
-            font-size: 2.5rem;
+            font-size: 2.25rem;
             font-weight: 700;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            margin-bottom: 0;
         }
 
-        .current-pricing {
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--primary-color);
+        .section-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--highlight-color), var(--primary-color));
+            border-radius: 3px;
         }
 
         .plans-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
         }
 
         .plan-card {
-            border-radius: 8px;
+            position: relative;
+            border-radius: 10px;
             overflow: hidden;
-            border: 1px solid #e9e9e9;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             height: 100%;
             display: flex;
             flex-direction: column;
+            background-color: white;
         }
 
         .plan-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
         }
 
         .plan-header {
-            padding: 0.75rem;
-            background-color: var(--primary-color);
-            color: white;
+            padding: 1rem;
             text-align: center;
+            background: var(--primary-color);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 60%);
+            opacity: 0.6;
         }
 
         .popular-plan .plan-header {
-            background-color: var(--highlight-color);
+            background: linear-gradient(135deg, var(--highlight-color), #e5730d);
         }
 
         .lifetime-plan .plan-header {
-            background: linear-gradient(45deg, #000000, #333333);
+            background: linear-gradient(135deg, #222222, #000000);
+        }
+
+        .best-value .plan-header {
+            background: linear-gradient(135deg, #2c7be5, #1a56a0);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--highlight-color);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 0.3rem 0.5rem;
+            border-bottom-left-radius: 8px;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
         }
 
         .plan-price {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
             margin: 0;
+            position: relative;
+            z-index: 2;
         }
 
         .plan-period {
             font-size: 0.8rem;
             opacity: 0.9;
+            margin-top: -5px;
+            position: relative;
+            z-index: 2;
         }
 
         .feature-list {
-            padding: 0.75rem;
+            padding: 1rem;
             font-size: 0.85rem;
             flex-grow: 1;
         }
 
         .feature-item {
-            padding: 4px 0;
+            padding: 0.3rem 0;
             display: flex;
-            align-items: baseline;
+            align-items: center;
         }
 
         .feature-icon {
             color: var(--primary-color);
-            margin-right: 6px;
-            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .popular-plan .feature-icon {
+            color: var(--highlight-color);
         }
 
         .plan-action {
-            padding: 0.75rem;
-            background-color: #f9f9f9;
+            padding: 0.75rem 1rem 1rem;
+            background-color: rgba(0, 0, 0, 0.02);
+            border-top: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .btn-buy {
+            border-radius: 50px;
+            font-weight: 500;
+            padding: 0.4rem 0;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-popular {
+            background: var(--highlight-color);
+            color: white;
+        }
+
+        .btn-popular:hover {
+            background: #e5730d;
+            color: white;
+            box-shadow: 0 4px 10px rgba(247, 146, 30, 0.3);
+        }
+
+        .btn-lifetime {
+            background: #000;
+            color: white;
+        }
+
+        .btn-lifetime:hover {
+            background: #333;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 114, 188, 0.3);
+        }
+
+        .btn-best {
+            background: #2c7be5;
+            color: white;
+        }
+
+        .btn-best:hover {
+            background: #1a56a0;
+            color: white;
+            box-shadow: 0 4px 10px rgba(44, 123, 229, 0.3);
         }
 
         .btc-address-box {
             background-color: #f8f9fa;
-            border-radius: 6px;
-            padding: 8px;
-            margin-bottom: 10px;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
             word-break: break-all;
             font-size: 0.85rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            position: relative;
         }
 
         #payment-notice {
             margin-top: 0.5rem;
-            padding: 0.5rem;
+            padding: 0.5rem 0.75rem;
             font-size: 0.9rem;
+            border-radius: 6px;
+            animation: fadeIn 0.5s ease;
         }
 
-        .badge-popular {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            font-size: 0.7rem;
-            z-index: 10;
+        .btc-qr-container {
+            background: white;
+            border-radius: 8px;
+            padding: 0.5rem;
+            margin-left: auto;
+            height: 80px;
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .badge-best {
+        #btc-qr {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 4px;
+        }
+
+        .copy-tooltip {
             position: absolute;
-            top: 5px;
-            right: 5px;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .copy-tooltip.show {
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 1.5s infinite;
+        }
+
+        .save-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.15rem 0.4rem;
+            border-radius: 50px;
             font-size: 0.7rem;
-            z-index: 10;
+            margin-left: 0.3rem;
         }
 
         footer {
-            background-color: var(--dark-color);
-            color: white;
+            margin-top: auto;
             padding: 0.5rem;
-            margin-top: 1rem;
+            text-align: center;
             font-size: 0.8rem;
+            color: #666;
         }
     </style>
     <script>
@@ -194,9 +380,9 @@
             balanceElement.textContent = `$${amount.toFixed(2)}`;
 
             if (amount >= 0) {
-                balanceElement.style.color = "green";
+                balanceElement.style.color = "#4dff88";
             } else {
-                balanceElement.style.color = "red";
+                balanceElement.style.color = "#ff4d4d";
             }
         }
 
@@ -209,9 +395,16 @@
             document.execCommand("copy");
             document.body.removeChild(textarea);
 
+            const tooltip = document.getElementById("copy-tooltip");
+            tooltip.classList.add("show");
+
+            setTimeout(() => {
+                tooltip.classList.remove("show");
+            }, 2000);
+
             const copyBtn = document.getElementById("copy-btn");
             const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<i class="bi bi-check"></i> Copied';
+            copyBtn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Copied';
             copyBtn.classList.remove("btn-primary");
             copyBtn.classList.add("btn-success");
 
@@ -259,206 +452,217 @@
 
         function selectPlan(plan, price) {
             const paymentNotice = document.getElementById('payment-notice');
-            paymentNotice.innerHTML = `<strong>You selected: ${plan}</strong><br>Please deposit <strong>$${price}</strong> to activate this plan.`;
+            paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-1"></i> <strong>${plan} plan selected!</strong><br>Deposit <strong>$${price}</strong> to activate.`;
             paymentNotice.style.display = 'block';
 
-            // Scroll to the top where the Bitcoin section is
+            // Add pulse animation to balance card
+            const balanceCard = document.querySelector('.balance-card');
+            balanceCard.classList.add('pulse-animation');
+
+            // Remove pulse after 3 pulses
+            setTimeout(() => {
+                balanceCard.classList.remove('pulse-animation');
+            }, 4500);
+
+            // Scroll to top in case user had to scroll
             window.scrollTo(0, 0);
         }
     </script>
 </head>
 
 <body>
-    <div class="main-container">
-        <div class="top-section">
-            <!-- Balance Card -->
-            <div class="balance-card">
-                <h3 class="mb-2">Your Balance</h3>
-                <h1 id="balance" class="mb-3">Loading...</h1>
-                <div id="payment-notice" class="alert alert-warning" style="display: none; margin-bottom: 0;"></div>
+    <div class="wrapper">
+        <div class="main-container">
+            <!-- Top Cards Section -->
+            <div class="card-container">
+                <!-- Balance Card -->
+                <div class="balance-card">
+                    <h3>Your Balance</h3>
+                    <h1 id="balance">Loading...</h1>
+                    <div id="payment-notice" class="alert alert-success" style="display: none; margin-bottom: 0;"></div>
+                </div>
+
+                <!-- Bitcoin Card -->
+                <div class="btc-card">
+                    <div class="d-flex align-items-center mb-2">
+                        <div>
+                            <h5 class="mb-0"><i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with Bitcoin
+                            </h5>
+                            <small class="text-muted">Deposits reflected in 10-30 minutes</small>
+                        </div>
+                        <div class="btc-qr-container">
+                            <img id="btc-qr"
+                                src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
+                                alt="Bitcoin QR Code">
+                        </div>
+                    </div>
+
+                    <div class="btc-address-box position-relative">
+                        <span id="copy-tooltip" class="copy-tooltip">Address copied!</span>
+                        <span id="btc-address">Loading...</span>
+                    </div>
+
+                    <button id="copy-btn" class="btn btn-primary w-100" onclick="copyBitcoinAddress()">
+                        <i class="bi bi-clipboard"></i> Copy Bitcoin Address
+                    </button>
+                </div>
             </div>
 
-            <!-- Bitcoin Card -->
-            <div class="btc-card">
-                <div class="d-flex align-items-center mb-2">
-                    <div>
-                        <h5 class="mb-0"><i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with Bitcoin</h5>
-                        <small>Deposits reflected in 10-30 minutes</small>
+            <!-- Plans Section -->
+            <div class="text-center mb-3">
+                <h4 class="section-title">Upgrade Your Sniping Power</h4>
+            </div>
+
+            <!-- Plans Grid -->
+            <div class="plans-grid">
+                <!-- Monthly Plan -->
+                <div class="plan-card popular-plan">
+                    <div class="plan-badge">POPULAR</div>
+                    <div class="plan-header">
+                        <h6 class="plan-title mb-1">Monthly</h6>
+                        <p class="plan-price">$19.99</p>
+                        <small class="plan-period">per month</small>
                     </div>
-                    <img id="btc-qr"
-                        src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
-                        alt="Bitcoin QR Code" class="ms-auto" style="width: 75px; height: 75px;">
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span><strong>Unlimited snipes</strong></span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span>No success fees</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span>Cancel anytime</span>
+                        </div>
+                    </div>
+                    <div class="plan-action">
+                        <button class="btn btn-buy btn-popular w-100" onclick="selectPlan('Monthly', '19.99')">
+                            <i class="bi bi-lightning-charge-fill me-1"></i> Buy Now
+                        </button>
+                    </div>
                 </div>
-                <div class="btc-address-box" id="btc-address">Loading...</div>
-                <button id="copy-btn" class="btn btn-primary btn-sm" onclick="copyBitcoinAddress()">
-                    <i class="bi bi-clipboard"></i> Copy Address
-                </button>
+
+                <!-- Quarterly Plan -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h6 class="plan-title mb-1">Quarterly</h6>
+                        <p class="plan-price">$49.99</p>
+                        <small class="plan-period">for 3 months <span class="save-badge">SAVE 16%</span></small>
+                    </div>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span><strong>Unlimited snipes</strong></span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span>No success fees</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span>Priority support</span>
+                        </div>
+                    </div>
+                    <div class="plan-action">
+                        <button class="btn btn-buy btn-outline w-100" onclick="selectPlan('Quarterly', '49.99')">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Semi-Annual Plan -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h6 class="plan-title mb-1">Semi-Annual</h6>
+                        <p class="plan-price">$99.99</p>
+                        <small class="plan-period">for 6 months <span class="save-badge">SAVE 17%</span></small>
+                    </div>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span><strong>Unlimited snipes</strong></span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span>No success fees</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span>VIP support</span>
+                        </div>
+                    </div>
+                    <div class="plan-action">
+                        <button class="btn btn-buy btn-outline w-100" onclick="selectPlan('Semi-Annual', '99.99')">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Annual Plan -->
+                <div class="plan-card best-value">
+                    <div class="plan-badge" style="background: #2c7be5;">BEST VALUE</div>
+                    <div class="plan-header">
+                        <h6 class="plan-title mb-1">Annual</h6>
+                        <p class="plan-price">$249.99</p>
+                        <small class="plan-period">for full year <span class="save-badge">SAVE 25%</span></small>
+                    </div>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span><strong>Unlimited snipes</strong></span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span>No success fees</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span>Premium support</span>
+                        </div>
+                    </div>
+                    <div class="plan-action">
+                        <button class="btn btn-buy btn-best w-100" onclick="selectPlan('Annual', '249.99')">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lifetime Plan -->
+                <div class="plan-card lifetime-plan">
+                    <div class="plan-header">
+                        <h6 class="plan-title mb-1">Lifetime</h6>
+                        <p class="plan-price">$499.99</p>
+                        <small class="plan-period">one-time payment</small>
+                    </div>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="bi bi-infinity feature-icon"></i>
+                            <span><strong>Pay once, use forever</strong></span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span>Lifetime updates</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle-fill feature-icon"></i>
+                            <span>Elite support</span>
+                        </div>
+                    </div>
+                    <div class="plan-action">
+                        <button class="btn btn-buy btn-lifetime w-100" onclick="selectPlan('Lifetime', '499.99')">
+                            Get Lifetime Access
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Current Pricing Notice -->
-        <div class="current-pricing">
-            <div class="d-flex align-items-center">
-                <div>
-                    <h6 class="mb-0">Your Current Plan: Default (1% Success Fee)</h6>
-                    <small>You only pay 1% of winning bid amounts. Upgrade to a package below for unlimited snipes with
-                        no success fees.</small>
-                </div>
-            </div>
-        </div>
-
-        <!-- Plans Grid -->
-        <div class="plans-grid">
-            <!-- Monthly Plan -->
-            <div class="plan-card">
-                <span class="badge bg-warning text-dark badge-popular">POPULAR</span>
-                <div class="plan-header popular-plan">
-                    <h6 class="plan-title mb-0">Monthly</h6>
-                    <p class="plan-price">$19.99</p>
-                    <small class="plan-period">per month</small>
-                </div>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span><strong>Unlimited snipes</strong></span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span>No success fees</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span>Cancel anytime</span>
-                    </div>
-                </div>
-                <div class="plan-action">
-                    <button class="btn btn-primary w-100 btn-sm" onclick="selectPlan('Monthly', '19.99')">
-                        Buy Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Quarterly Plan -->
-            <div class="plan-card">
-                <div class="plan-header">
-                    <h6 class="plan-title mb-0">Quarterly</h6>
-                    <p class="plan-price">$49.99</p>
-                    <small class="plan-period">for 3 months <span class="badge bg-warning text-dark">SAVE
-                            16%</span></small>
-                </div>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span><strong>Unlimited snipes</strong></span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span>No success fees</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span>Priority support</span>
-                    </div>
-                </div>
-                <div class="plan-action">
-                    <button class="btn btn-outline-primary w-100 btn-sm" onclick="selectPlan('Quarterly', '49.99')">
-                        Buy Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Semi-Annual Plan -->
-            <div class="plan-card">
-                <div class="plan-header">
-                    <h6 class="plan-title mb-0">Semi-Annual</h6>
-                    <p class="plan-price">$99.99</p>
-                    <small class="plan-period">for 6 months <span class="badge bg-warning text-dark">SAVE
-                            17%</span></small>
-                </div>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span><strong>Unlimited snipes</strong></span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span>No success fees</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span>VIP support</span>
-                    </div>
-                </div>
-                <div class="plan-action">
-                    <button class="btn btn-outline-primary w-100 btn-sm" onclick="selectPlan('Semi-Annual', '99.99')">
-                        Buy Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Annual Plan -->
-            <div class="plan-card">
-                <span class="badge bg-info text-dark badge-best">BEST VALUE</span>
-                <div class="plan-header">
-                    <h6 class="plan-title mb-0">Annual</h6>
-                    <p class="plan-price">$249.99</p>
-                    <small class="plan-period">for 1 year <span class="badge bg-warning text-dark">SAVE
-                            25%</span></small>
-                </div>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span><strong>Unlimited snipes</strong></span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span>No success fees</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span>Premium support</span>
-                    </div>
-                </div>
-                <div class="plan-action">
-                    <button class="btn btn-outline-primary w-100 btn-sm" onclick="selectPlan('Annual', '249.99')">
-                        Buy Now
-                    </button>
-                </div>
-            </div>
-
-            <!-- Lifetime Plan -->
-            <div class="plan-card">
-                <div class="plan-header lifetime-plan">
-                    <h6 class="plan-title mb-0">Lifetime</h6>
-                    <p class="plan-price">$499.99</p>
-                    <small class="plan-period">one-time payment</small>
-                </div>
-                <div class="feature-list">
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span><strong>Pay once, use forever</strong></span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span>Lifetime updates</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="bi bi-check-circle-fill feature-icon"></i>
-                        <span>Elite support</span>
-                    </div>
-                </div>
-                <div class="plan-action">
-                    <button class="btn btn-dark w-100 btn-sm" onclick="selectPlan('Lifetime', '499.99')">
-                        Buy Now
-                    </button>
-                </div>
-            </div>
-        </div>
+        <footer>
+            © 2023 Snipeable.com - The Ultimate Auction Sniping Tool
+        </footer>
     </div>
-
-    <footer class="text-center">
-        <small>© 2023 Snipeable.com - The Ultimate Auction Sniping Tool</small>
-    </footer>
 
     <script>
         user();
