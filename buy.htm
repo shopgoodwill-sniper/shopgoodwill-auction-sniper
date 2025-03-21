@@ -498,17 +498,19 @@
                 else if (typeof data?.data === 'boolean' && data?.data) {
                     await user();
 
-                    const paymentNotice = document.getElementById('payment-notice');
-                    paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> <strong>${plan} unlimited snipes now activated successfully!</strong> <strong>$${price}</strong> deducted. You may now close this window!`;
-                    paymentNotice.style.display = 'block';
+                    alert(`${plan} unlimited snipes now activated successfully! $${price} deducted. You may now close this window!`);
 
-                    const qrContainer = document.querySelector('.qr-code');
+                    /* const paymentNotice = document.getElementById('payment-notice');
+                    paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> <strong>${plan} unlimited snipes now activated successfully!</strong> <strong>$${price}</strong> deducted. You may now close this window!`;
+                    paymentNotice.style.display = 'block'; */
+
+                    /* const qrContainer = document.querySelector('.qr-code');
                     qrContainer.classList.add('pulse');
 
                     setTimeout(() => {
-                        paymentNotice.style.display = 'none';
+                        // paymentNotice.style.display = 'none';
                         qrContainer.classList.remove('pulse');
-                    }, 5000);
+                    }, 5000); */
                 }
 
                 return data?.data;
@@ -550,7 +552,7 @@
                     <div class="btc-address-container">
                         <span id="btc-address">Loading...</span>
                     </div>
-                    <button id="copy-btn" class="btn" onclick="copyBitcoinAddress()">
+                    <button id="copy-btn" class="btn" onclick="copyBitcoinAddress()" type="button">
                         <i class="bi bi-clipboard"></i> Copy Bitcoin Address
                     </button>
                 </div>
@@ -584,7 +586,7 @@
                         </div>
                     </div>
                     <div class="plan-action">
-                        <button class="btn btn-buy btn-popular" onclick="selectPlan('Monthly', '19.99')">
+                        <button class="btn btn-buy btn-popular" onclick="selectPlan('Monthly', '19.99')" type="button">
                             Upgrade
                         </button>
                     </div>
@@ -612,7 +614,8 @@
                         </div>
                     </div>
                     <div class="plan-action">
-                        <button class="btn btn-buy btn-primary" onclick="selectPlan('Quarterly', '49.99')">
+                        <button class="btn btn-buy btn-primary" onclick="selectPlan('Quarterly', '49.99')"
+                            type="button">
                             Upgrade
                         </button>
                     </div>
@@ -640,7 +643,8 @@
                         </div>
                     </div>
                     <div class="plan-action">
-                        <button class="btn btn-buy btn-primary" onclick="selectPlan('Semi-Annual', '99.99')">
+                        <button class="btn btn-buy btn-primary" onclick="selectPlan('Semi-Annual', '99.99')"
+                            type="button">
                             Upgrade
                         </button>
                     </div>
@@ -668,7 +672,7 @@
                         </div>
                     </div>
                     <div class="plan-action">
-                        <button class="btn btn-buy btn-primary" onclick="selectPlan('Annual', '249.99')">
+                        <button class="btn btn-buy btn-primary" onclick="selectPlan('Annual', '249.99')" type="button">
                             Upgrade
                         </button>
                     </div>
@@ -696,7 +700,8 @@
                         </div>
                     </div>
                     <div class="plan-action">
-                        <button class="btn btn-buy btn-lifetime" onclick="selectPlan('Lifetime', '499.99')">
+                        <button class="btn btn-buy btn-lifetime" onclick="selectPlan('Lifetime', '499.99')"
+                            type="button">
                             Upgrade
                         </button>
                     </div>
