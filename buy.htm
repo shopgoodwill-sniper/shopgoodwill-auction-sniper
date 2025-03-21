@@ -55,9 +55,12 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-right: 2rem;
             border-right: 3px solid rgba(255, 255, 255, 0.4);
             width: 32%;
+            text-align: center;
+            /* Center all text */
+            padding-right: 0;
+            /* Remove right padding since we're centering */
         }
 
         .balance-label {
@@ -67,6 +70,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
 
         #balance {
@@ -74,12 +78,14 @@
             font-weight: 800;
             margin: 0.25rem 0;
             text-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+            text-align: center;
         }
 
         .balance-note {
             font-size: 1.2rem;
             opacity: 0.95;
             font-weight: 500;
+            text-align: center;
         }
 
         .bitcoin-box {
@@ -93,14 +99,26 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+        }
+
+        .qr-instructions {
+            color: white;
+            font-size: 0.9rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem;
+            border-radius: 8px 8px 0 0;
+            width: 200px;
+            margin-bottom: 0;
+            font-weight: 500;
         }
 
         .qr-code {
             background: white;
             padding: 0.5rem;
-            border-radius: 12px;
-            /* Make QR code even bigger */
-            height: 200px;
+            border-radius: 0 0 12px 12px;
+            height: 180px;
             width: 200px;
             display: flex;
             align-items: center;
@@ -108,22 +126,11 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
             cursor: pointer;
             transition: transform 0.2s;
+            margin-top: 0;
         }
 
         .qr-code:hover {
             transform: scale(1.05);
-        }
-
-        .qr-instructions {
-            color: white;
-            font-size: 1rem;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem;
-            border-radius: 8px;
-            margin-top: 0.5rem;
-            width: 200px;
-            font-weight: 500;
         }
 
         #btc-qr {
@@ -284,7 +291,7 @@
 
         .plan-action {
             padding: 0.9rem;
-            border-top: A1px solid #f0f0f0;
+            border-top: 1px solid #f0f0f0;
         }
 
         .btn-buy {
@@ -485,13 +492,13 @@
             <!-- Bitcoin Add Funds -->
             <div class="bitcoin-box">
                 <div class="qr-code-container">
+                    <div class="qr-instructions">
+                        <i class="bi bi-phone me-1"></i> Scan with phone camera or click to view
+                    </div>
                     <div class="qr-code" onclick="openMempoolExplorer()" title="Click to view on mempool.space">
                         <img id="btc-qr"
                             src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
                             alt="Bitcoin QR Code">
-                    </div>
-                    <div class="qr-instructions">
-                        <i class="bi bi-phone me-1"></i> Scan with phone camera<br>or click to view on blockchain
                     </div>
                 </div>
 
