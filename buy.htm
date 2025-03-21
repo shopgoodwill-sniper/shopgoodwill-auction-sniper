@@ -394,6 +394,7 @@
     <script>
         function updateBalance(amount) {
             amount = Number(amount);
+            window.balance = amount;
             const balanceElement = document.getElementById("balance");
             balanceElement.textContent = `$${amount.toFixed(2)}`;
 
@@ -463,6 +464,9 @@
         }
 
         function selectPlan(plan, price) {
+            if (Number(price) > window.balance)
+                return alert('Insufficient balance!');
+
             const paymentNotice = document.getElementById('payment-notice');
             paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> <strong>${plan} plan selected!</strong> Deposit <strong>$${price}</strong> to activate.`;
             paymentNotice.style.display = 'block';
@@ -669,7 +673,7 @@
         user();
         setInterval(() => {
             user();
-        }, 5000);
+        }, 60000);
     </script>
 </body>
 
