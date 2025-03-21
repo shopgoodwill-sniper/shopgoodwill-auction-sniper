@@ -18,10 +18,8 @@
     <style>
         :root {
             --primary-color: #0072bc;
-            /* ShopGoodwill blue */
             --secondary-color: #005a96;
             --highlight-color: #f7921e;
-            /* ShopGoodwill orange accent */
             --dark-color: #212529;
             --light-color: #f8f9fa;
         }
@@ -36,109 +34,145 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        .full-height-container {
+        .main-container {
+            display: grid;
+            grid-template-columns: 40% 60%;
             height: 100vh;
-            max-height: 100vh;
-            display: flex;
-            flex-direction: row;
         }
 
-        .left-panel {
-            width: 35%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        /* Left side - Balance and Bitcoin */
+        .balance-container {
+            background: var(--primary-color);
             color: white;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-rows: auto auto 1fr;
+            padding: 1rem;
+            gap: 0.5rem;
         }
 
-        .right-panel {
-            width: 65%;
-            height: 100%;
-            overflow: hidden;
-            padding: 1.5rem;
-            background: white;
-        }
-
-        .bitcoin-section {
-            margin-top: 1rem;
-            flex-grow: 1;
+        .balance-header {
             display: flex;
             flex-direction: column;
+            margin-bottom: 0.5rem;
+        }
+
+        #balance {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .bitcoin-container {
+            display: grid;
+            grid-template-rows: auto 1fr auto auto;
+            gap: 0.5rem;
+        }
+
+        .bitcoin-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0;
         }
 
         .qr-container {
-            flex-grow: 1;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 1rem;
+            align-items: center;
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            margin: 1rem 0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         #btc-qr {
-            width: 80%;
-            max-width: 220px;
+            width: 100%;
+            max-width: 180px;
             height: auto;
-            display: block;
-            margin: 0 auto;
         }
 
         .btc-address-container {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
-            position: relative;
+            border-radius: 6px;
+            padding: 0.5rem;
+            font-size: 0.85rem;
         }
 
         #btc-address {
             word-break: break-all;
             color: white;
-            font-size: 0.9rem;
         }
 
-        #balance {
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 0.5rem 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        #copy-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all 0.2s;
         }
 
+        #copy-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        #payment-notice {
+            margin-top: 0.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark-color);
+            border-radius: 6px;
+            padding: 0.5rem;
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        /* Right side - Plans */
         .plans-container {
-            height: 100%;
+            background: white;
+            display: grid;
+            grid-template-rows: auto 1fr;
+            padding: 0.75rem;
+            gap: 0.5rem;
+        }
+
+        .plans-header {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .plans-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            grid-gap: 1rem;
-            padding: 0 0.5rem;
+            gap: 0.5rem;
+            height: 100%;
         }
 
         .plan-card {
-            height: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eaeaea;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            border-radius: 6px;
             background: white;
-            transition: all 0.2s ease;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .plan-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
         }
 
         .plan-header {
-            padding: 1rem 0.5rem;
-            text-align: center;
             background: var(--primary-color);
             color: white;
+            padding: 0.75rem 0.5rem;
+            text-align: center;
+            border-radius: 6px 6px 0 0;
         }
 
         .popular-plan .plan-header {
@@ -149,51 +183,65 @@
             background: #272727;
         }
 
+        .plan-title {
+            font-size: 1rem;
+            margin: 0;
+        }
+
         .plan-price {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 0;
+            margin: 0;
         }
 
         .plan-period {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             opacity: 0.9;
         }
 
         .feature-list {
-            flex-grow: 1;
-            padding: 0.75rem;
-            font-size: 0.85rem;
+            padding: 0.75rem 0.5rem;
+            font-size: 0.8rem;
+            display: grid;
+            align-content: start;
+            gap: 0.3rem;
+            overflow: auto;
         }
 
         .feature-item {
-            padding: 0.3rem 0;
             display: flex;
             align-items: flex-start;
+            gap: 0.3rem;
+            line-height: 1.2;
         }
 
         .feature-icon {
             color: var(--primary-color);
-            margin-right: 6px;
-            font-size: 0.75rem;
-            padding-top: 3px;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            margin-top: 0.2rem;
         }
 
         .popular-plan .feature-icon {
             color: var(--highlight-color);
         }
 
+        .lifetime-plan .feature-icon {
+            color: #272727;
+        }
+
         .plan-action {
-            padding: 0.75rem;
+            padding: 0.5rem;
             border-top: 1px solid #f0f0f0;
         }
 
         .btn-buy {
             width: 100%;
-            border-radius: 30px;
-            padding: 0.4rem;
+            font-size: 0.85rem;
+            padding: 0.4rem 0;
+            border-radius: 4px;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
         .btn-primary {
@@ -213,9 +261,8 @@
         }
 
         .btn-popular:hover {
-            background: #e07300;
-            border-color: #e07300;
-            color: white;
+            background: #e67300;
+            border-color: #e67300;
         }
 
         .btn-lifetime {
@@ -229,47 +276,22 @@
             border-color: #000;
         }
 
-        .btn-copy {
-            font-size: 0.9rem;
-            padding: 0.5rem;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 100%;
-        }
-
-        .btn-copy:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
         .save-badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
-            padding: 0.1rem 0.4rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            margin-left: 0.2rem;
+            padding: 0.1rem 0.25rem;
+            border-radius: 3px;
+            font-size: 0.65rem;
         }
 
-        #payment-notice {
-            position: absolute;
-            bottom: 1.5rem;
-            left: 1.5rem;
-            right: 1.5rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--dark-color);
-            border-radius: 8px;
-            padding: 0.75rem;
-            display: none;
-            animation: fadeIn 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        .highlight {
+            font-weight: 600;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(5px);
             }
 
             to {
@@ -278,8 +300,8 @@
             }
         }
 
-        .pulse-animation {
-            animation: pulse 1.5s ease infinite;
+        .pulse {
+            animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
@@ -288,28 +310,12 @@
             }
 
             50% {
-                transform: scale(1.03);
+                transform: scale(1.02);
             }
 
             100% {
                 transform: scale(1);
             }
-        }
-
-        .tagline {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .highlight {
-            color: white;
-            font-weight: bold;
-        }
-
-        .deposit-text {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-align: center;
-            margin-bottom: 0.5rem;
         }
     </style>
     <script>
@@ -380,33 +386,33 @@
 
         function selectPlan(plan, price) {
             const paymentNotice = document.getElementById('payment-notice');
-            paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> <strong>${plan} plan selected!</strong><br>Deposit <strong>$${price}</strong> using the Bitcoin QR code to activate.`;
+            paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-1"></i> <strong>${plan} plan selected!</strong><br>Deposit <strong>$${price}</strong> to activate.`;
             paymentNotice.style.display = 'block';
 
-            // Pulse QR code to draw attention
             const qrContainer = document.querySelector('.qr-container');
-            qrContainer.classList.add('pulse-animation');
+            qrContainer.classList.add('pulse');
 
-            // Remove pulse after a few seconds
             setTimeout(() => {
-                qrContainer.classList.remove('pulse-animation');
-            }, 6000);
+                qrContainer.classList.remove('pulse');
+            }, 4500);
         }
     </script>
 </head>
 
 <body>
-    <div class="full-height-container">
-        <!-- Left Panel - Balance & Bitcoin -->
-        <div class="left-panel">
-            <h2>Your Balance</h2>
-            <h1 id="balance">Loading...</h1>
-            <p class="tagline">You're using the <span class="highlight">1% Success Fee</span> plan<br>Upgrade to
-                unlimited snipes with no fees!</p>
+    <div class="main-container">
+        <!-- Left Side - Balance & Bitcoin -->
+        <div class="balance-container">
+            <div class="balance-header">
+                <h4 class="mb-0">Your Balance</h4>
+                <h2 id="balance">Loading...</h2>
+                <p class="tagline">Currently using <span class="highlight">1% Success Fee</span> plan</p>
+            </div>
 
-            <div class="bitcoin-section">
-                <h4><i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with Bitcoin</h4>
-                <p class="deposit-text">Scan QR code or copy address below</p>
+            <div class="bitcoin-container">
+                <h5 class="bitcoin-header">
+                    <i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with Bitcoin
+                </h5>
 
                 <div class="qr-container">
                     <img id="btc-qr"
@@ -418,23 +424,23 @@
                     <span id="btc-address">Loading...</span>
                 </div>
 
-                <button id="copy-btn" class="btn btn-copy" onclick="copyBitcoinAddress()">
+                <button id="copy-btn" class="btn w-100" onclick="copyBitcoinAddress()">
                     <i class="bi bi-clipboard"></i> Copy Bitcoin Address
                 </button>
-            </div>
 
-            <div id="payment-notice"></div>
+                <div id="payment-notice"></div>
+            </div>
         </div>
 
-        <!-- Right Panel - Subscription Plans -->
-        <div class="right-panel">
-            <h3 class="mb-3 text-center">Choose Your Unlimited Plan</h3>
+        <!-- Right Side - Subscription Plans -->
+        <div class="plans-container">
+            <h4 class="plans-header">Upgrade To Unlimited Snipes (No Success Fees)</h4>
 
-            <div class="plans-container">
+            <div class="plans-grid">
                 <!-- Monthly Plan -->
                 <div class="plan-card popular-plan">
                     <div class="plan-header">
-                        <h5 class="mb-1">Monthly</h5>
+                        <h6 class="plan-title">Monthly</h6>
                         <p class="plan-price">$19.99</p>
                         <small class="plan-period">per month</small>
                     </div>
@@ -462,7 +468,7 @@
                 <!-- Quarterly Plan -->
                 <div class="plan-card">
                     <div class="plan-header">
-                        <h5 class="mb-1">Quarterly</h5>
+                        <h6 class="plan-title">Quarterly</h6>
                         <p class="plan-price">$49.99</p>
                         <small class="plan-period">for 3 months <span class="save-badge">SAVE 16%</span></small>
                     </div>
@@ -490,7 +496,7 @@
                 <!-- Semi-Annual Plan -->
                 <div class="plan-card">
                     <div class="plan-header">
-                        <h5 class="mb-1">Semi-Annual</h5>
+                        <h6 class="plan-title">Semi-Annual</h6>
                         <p class="plan-price">$99.99</p>
                         <small class="plan-period">for 6 months <span class="save-badge">SAVE 17%</span></small>
                     </div>
@@ -518,9 +524,9 @@
                 <!-- Annual Plan -->
                 <div class="plan-card">
                     <div class="plan-header">
-                        <h5 class="mb-1">Annual</h5>
+                        <h6 class="plan-title">Annual</h6>
                         <p class="plan-price">$249.99</p>
-                        <small class="plan-period">for full year <span class="save-badge">SAVE 25%</span></small>
+                        <small class="plan-period">for 1 year <span class="save-badge">SAVE 25%</span></small>
                     </div>
                     <div class="feature-list">
                         <div class="feature-item">
@@ -546,7 +552,7 @@
                 <!-- Lifetime Plan -->
                 <div class="plan-card lifetime-plan">
                     <div class="plan-header">
-                        <h5 class="mb-1">Lifetime</h5>
+                        <h6 class="plan-title">Lifetime</h6>
                         <p class="plan-price">$499.99</p>
                         <small class="plan-period">one-time payment</small>
                     </div>
