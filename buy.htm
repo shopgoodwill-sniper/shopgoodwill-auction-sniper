@@ -29,181 +29,154 @@
         html,
         body {
             height: 100%;
-            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f2f5;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: auto;
         }
 
-        .wrapper {
-            min-height: 100%;
+        .full-height-container {
+            height: 100vh;
+            max-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            flex-direction: row;
         }
 
-        .main-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-
-        .card-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .balance-card {
-            flex: 1;
+        .left-panel {
+            width: 35%;
+            height: 100%;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            border-radius: 10px;
-            padding: 1.25rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 114, 0.15);
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: center;
         }
 
-        .btc-card {
-            flex: 1;
-            background-color: white;
+        .right-panel {
+            width: 65%;
+            height: 100%;
+            overflow: hidden;
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .bitcoin-section {
+            margin-top: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .qr-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: white;
             border-radius: 10px;
-            padding: 1.25rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            margin: 1rem 0;
+        }
+
+        #btc-qr {
+            width: 80%;
+            max-width: 220px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btc-address-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        #btc-address {
+            word-break: break-all;
+            color: white;
+            font-size: 0.9rem;
         }
 
         #balance {
-            font-size: 2.25rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 0;
+            margin: 0.5rem 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            color: var(--dark-color);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 0.5rem;
-        }
-
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, var(--highlight-color), var(--primary-color));
-            border-radius: 3px;
-        }
-
-        .plans-grid {
+        .plans-container {
+            height: 100%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 1rem;
+            padding: 0 0.5rem;
         }
 
         .plan-card {
-            position: relative;
+            height: 100%;
             border-radius: 10px;
             overflow: hidden;
-            border: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            height: 100%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eaeaea;
             display: flex;
             flex-direction: column;
-            background-color: white;
+            background: white;
+            transition: all 0.2s ease;
         }
 
         .plan-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
         .plan-header {
-            padding: 1rem;
+            padding: 1rem 0.5rem;
             text-align: center;
             background: var(--primary-color);
             color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .plan-header:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 60%);
-            opacity: 0.6;
         }
 
         .popular-plan .plan-header {
-            background: linear-gradient(135deg, var(--highlight-color), #e5730d);
+            background: var(--highlight-color);
         }
 
         .lifetime-plan .plan-header {
-            background: linear-gradient(135deg, #222222, #000000);
-        }
-
-        .best-value .plan-header {
-            background: linear-gradient(135deg, #2c7be5, #1a56a0);
-        }
-
-        .plan-badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: var(--highlight-color);
-            color: white;
-            font-size: 0.7rem;
-            font-weight: bold;
-            padding: 0.3rem 0.5rem;
-            border-bottom-left-radius: 8px;
-            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 1;
+            background: #272727;
         }
 
         .plan-price {
-            font-size: 1.75rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin: 0;
-            position: relative;
-            z-index: 2;
+            margin-bottom: 0;
         }
 
         .plan-period {
             font-size: 0.8rem;
             opacity: 0.9;
-            margin-top: -5px;
-            position: relative;
-            z-index: 2;
         }
 
         .feature-list {
-            padding: 1rem;
-            font-size: 0.85rem;
             flex-grow: 1;
+            padding: 0.75rem;
+            font-size: 0.85rem;
         }
 
         .feature-item {
             padding: 0.3rem 0;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .feature-icon {
             color: var(--primary-color);
-            margin-right: 0.5rem;
-            font-size: 0.8rem;
-            flex-shrink: 0;
+            margin-right: 6px;
+            font-size: 0.75rem;
+            padding-top: 3px;
         }
 
         .popular-plan .feature-icon {
@@ -211,125 +184,92 @@
         }
 
         .plan-action {
-            padding: 0.75rem 1rem 1rem;
-            background-color: rgba(0, 0, 0, 0.02);
-            border-top: 1px solid rgba(0, 0, 0, 0.03);
+            padding: 0.75rem;
+            border-top: 1px solid #f0f0f0;
         }
 
         .btn-buy {
-            border-radius: 50px;
+            width: 100%;
+            border-radius: 30px;
+            padding: 0.4rem;
             font-weight: 500;
-            padding: 0.4rem 0;
-            transition: all 0.3s ease;
-            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
         }
 
         .btn-popular {
             background: var(--highlight-color);
+            border-color: var(--highlight-color);
             color: white;
         }
 
         .btn-popular:hover {
-            background: #e5730d;
+            background: #e07300;
+            border-color: #e07300;
             color: white;
-            box-shadow: 0 4px 10px rgba(247, 146, 30, 0.3);
         }
 
         .btn-lifetime {
-            background: #000;
+            background: #272727;
+            border-color: #272727;
             color: white;
         }
 
         .btn-lifetime:hover {
-            background: #333;
+            background: #000;
+            border-color: #000;
+        }
+
+        .btn-copy {
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
             color: white;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 100%;
         }
 
-        .btn-outline {
-            border: 1px solid var(--primary-color);
-            color: var(--primary-color);
-            background: transparent;
+        .btn-copy:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 10px rgba(0, 114, 188, 0.3);
-        }
-
-        .btn-best {
-            background: #2c7be5;
-            color: white;
-        }
-
-        .btn-best:hover {
-            background: #1a56a0;
-            color: white;
-            box-shadow: 0 4px 10px rgba(44, 123, 229, 0.3);
-        }
-
-        .btc-address-box {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 0.75rem;
-            margin-bottom: 0.75rem;
-            word-break: break-all;
-            font-size: 0.85rem;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            position: relative;
+        .save-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.1rem 0.4rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            margin-left: 0.2rem;
         }
 
         #payment-notice {
-            margin-top: 0.5rem;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.9rem;
-            border-radius: 6px;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .btc-qr-container {
-            background: white;
-            border-radius: 8px;
-            padding: 0.5rem;
-            margin-left: auto;
-            height: 80px;
-            width: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        #btc-qr {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 4px;
-        }
-
-        .copy-tooltip {
             position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-
-        .copy-tooltip.show {
-            opacity: 1;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark-color);
+            border-radius: 8px;
+            padding: 0.75rem;
+            display: none;
+            animation: fadeIn 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(10px);
             }
 
             to {
@@ -338,13 +278,17 @@
             }
         }
 
+        .pulse-animation {
+            animation: pulse 1.5s ease infinite;
+        }
+
         @keyframes pulse {
             0% {
                 transform: scale(1);
             }
 
             50% {
-                transform: scale(1.05);
+                transform: scale(1.03);
             }
 
             100% {
@@ -352,25 +296,20 @@
             }
         }
 
-        .pulse-animation {
-            animation: pulse 1.5s infinite;
+        .tagline {
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .save-badge {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 0.15rem 0.4rem;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            margin-left: 0.3rem;
+        .highlight {
+            color: white;
+            font-weight: bold;
         }
 
-        footer {
-            margin-top: auto;
-            padding: 0.5rem;
+        .deposit-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
             text-align: center;
-            font-size: 0.8rem;
-            color: #666;
+            margin-bottom: 0.5rem;
         }
     </style>
     <script>
@@ -395,23 +334,12 @@
             document.execCommand("copy");
             document.body.removeChild(textarea);
 
-            const tooltip = document.getElementById("copy-tooltip");
-            tooltip.classList.add("show");
-
-            setTimeout(() => {
-                tooltip.classList.remove("show");
-            }, 2000);
-
             const copyBtn = document.getElementById("copy-btn");
             const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Copied';
-            copyBtn.classList.remove("btn-primary");
-            copyBtn.classList.add("btn-success");
+            copyBtn.innerHTML = '<i class="bi bi-check"></i> Copied!';
 
             setTimeout(() => {
                 copyBtn.innerHTML = originalText;
-                copyBtn.classList.remove("btn-success");
-                copyBtn.classList.add("btn-primary");
             }, 2000);
         }
 
@@ -452,74 +380,61 @@
 
         function selectPlan(plan, price) {
             const paymentNotice = document.getElementById('payment-notice');
-            paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-1"></i> <strong>${plan} plan selected!</strong><br>Deposit <strong>$${price}</strong> to activate.`;
+            paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> <strong>${plan} plan selected!</strong><br>Deposit <strong>$${price}</strong> using the Bitcoin QR code to activate.`;
             paymentNotice.style.display = 'block';
 
-            // Add pulse animation to balance card
-            const balanceCard = document.querySelector('.balance-card');
-            balanceCard.classList.add('pulse-animation');
+            // Pulse QR code to draw attention
+            const qrContainer = document.querySelector('.qr-container');
+            qrContainer.classList.add('pulse-animation');
 
-            // Remove pulse after 3 pulses
+            // Remove pulse after a few seconds
             setTimeout(() => {
-                balanceCard.classList.remove('pulse-animation');
-            }, 4500);
-
-            // Scroll to top in case user had to scroll
-            window.scrollTo(0, 0);
+                qrContainer.classList.remove('pulse-animation');
+            }, 6000);
         }
     </script>
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="main-container">
-            <!-- Top Cards Section -->
-            <div class="card-container">
-                <!-- Balance Card -->
-                <div class="balance-card">
-                    <h3>Your Balance</h3>
-                    <h1 id="balance">Loading...</h1>
-                    <div id="payment-notice" class="alert alert-success" style="display: none; margin-bottom: 0;"></div>
+    <div class="full-height-container">
+        <!-- Left Panel - Balance & Bitcoin -->
+        <div class="left-panel">
+            <h2>Your Balance</h2>
+            <h1 id="balance">Loading...</h1>
+            <p class="tagline">You're using the <span class="highlight">1% Success Fee</span> plan<br>Upgrade to
+                unlimited snipes with no fees!</p>
+
+            <div class="bitcoin-section">
+                <h4><i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with Bitcoin</h4>
+                <p class="deposit-text">Scan QR code or copy address below</p>
+
+                <div class="qr-container">
+                    <img id="btc-qr"
+                        src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
+                        alt="Bitcoin QR Code">
                 </div>
 
-                <!-- Bitcoin Card -->
-                <div class="btc-card">
-                    <div class="d-flex align-items-center mb-2">
-                        <div>
-                            <h5 class="mb-0"><i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with Bitcoin
-                            </h5>
-                            <small class="text-muted">Deposits reflected in 10-30 minutes</small>
-                        </div>
-                        <div class="btc-qr-container">
-                            <img id="btc-qr"
-                                src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
-                                alt="Bitcoin QR Code">
-                        </div>
-                    </div>
-
-                    <div class="btc-address-box position-relative">
-                        <span id="copy-tooltip" class="copy-tooltip">Address copied!</span>
-                        <span id="btc-address">Loading...</span>
-                    </div>
-
-                    <button id="copy-btn" class="btn btn-primary w-100" onclick="copyBitcoinAddress()">
-                        <i class="bi bi-clipboard"></i> Copy Bitcoin Address
-                    </button>
+                <div class="btc-address-container">
+                    <span id="btc-address">Loading...</span>
                 </div>
+
+                <button id="copy-btn" class="btn btn-copy" onclick="copyBitcoinAddress()">
+                    <i class="bi bi-clipboard"></i> Copy Bitcoin Address
+                </button>
             </div>
 
-            <!-- Plans Section -->
-            <div class="text-center mb-3">
-                <h4 class="section-title">Upgrade Your Sniping Power</h4>
-            </div>
+            <div id="payment-notice"></div>
+        </div>
 
-            <!-- Plans Grid -->
-            <div class="plans-grid">
+        <!-- Right Panel - Subscription Plans -->
+        <div class="right-panel">
+            <h3 class="mb-3 text-center">Choose Your Unlimited Plan</h3>
+
+            <div class="plans-container">
                 <!-- Monthly Plan -->
                 <div class="plan-card popular-plan">
-                    <div class="plan-badge">POPULAR</div>
                     <div class="plan-header">
-                        <h6 class="plan-title mb-1">Monthly</h6>
+                        <h5 class="mb-1">Monthly</h5>
                         <p class="plan-price">$19.99</p>
                         <small class="plan-period">per month</small>
                     </div>
@@ -538,8 +453,8 @@
                         </div>
                     </div>
                     <div class="plan-action">
-                        <button class="btn btn-buy btn-popular w-100" onclick="selectPlan('Monthly', '19.99')">
-                            <i class="bi bi-lightning-charge-fill me-1"></i> Buy Now
+                        <button class="btn btn-buy btn-popular" onclick="selectPlan('Monthly', '19.99')">
+                            Buy Now
                         </button>
                     </div>
                 </div>
@@ -547,7 +462,7 @@
                 <!-- Quarterly Plan -->
                 <div class="plan-card">
                     <div class="plan-header">
-                        <h6 class="plan-title mb-1">Quarterly</h6>
+                        <h5 class="mb-1">Quarterly</h5>
                         <p class="plan-price">$49.99</p>
                         <small class="plan-period">for 3 months <span class="save-badge">SAVE 16%</span></small>
                     </div>
@@ -566,7 +481,7 @@
                         </div>
                     </div>
                     <div class="plan-action">
-                        <button class="btn btn-buy btn-outline w-100" onclick="selectPlan('Quarterly', '49.99')">
+                        <button class="btn btn-buy btn-primary" onclick="selectPlan('Quarterly', '49.99')">
                             Buy Now
                         </button>
                     </div>
@@ -575,7 +490,7 @@
                 <!-- Semi-Annual Plan -->
                 <div class="plan-card">
                     <div class="plan-header">
-                        <h6 class="plan-title mb-1">Semi-Annual</h6>
+                        <h5 class="mb-1">Semi-Annual</h5>
                         <p class="plan-price">$99.99</p>
                         <small class="plan-period">for 6 months <span class="save-badge">SAVE 17%</span></small>
                     </div>
@@ -594,17 +509,16 @@
                         </div>
                     </div>
                     <div class="plan-action">
-                        <button class="btn btn-buy btn-outline w-100" onclick="selectPlan('Semi-Annual', '99.99')">
+                        <button class="btn btn-buy btn-primary" onclick="selectPlan('Semi-Annual', '99.99')">
                             Buy Now
                         </button>
                     </div>
                 </div>
 
                 <!-- Annual Plan -->
-                <div class="plan-card best-value">
-                    <div class="plan-badge" style="background: #2c7be5;">BEST VALUE</div>
+                <div class="plan-card">
                     <div class="plan-header">
-                        <h6 class="plan-title mb-1">Annual</h6>
+                        <h5 class="mb-1">Annual</h5>
                         <p class="plan-price">$249.99</p>
                         <small class="plan-period">for full year <span class="save-badge">SAVE 25%</span></small>
                     </div>
@@ -623,7 +537,7 @@
                         </div>
                     </div>
                     <div class="plan-action">
-                        <button class="btn btn-buy btn-best w-100" onclick="selectPlan('Annual', '249.99')">
+                        <button class="btn btn-buy btn-primary" onclick="selectPlan('Annual', '249.99')">
                             Buy Now
                         </button>
                     </div>
@@ -632,7 +546,7 @@
                 <!-- Lifetime Plan -->
                 <div class="plan-card lifetime-plan">
                     <div class="plan-header">
-                        <h6 class="plan-title mb-1">Lifetime</h6>
+                        <h5 class="mb-1">Lifetime</h5>
                         <p class="plan-price">$499.99</p>
                         <small class="plan-period">one-time payment</small>
                     </div>
@@ -651,17 +565,13 @@
                         </div>
                     </div>
                     <div class="plan-action">
-                        <button class="btn btn-buy btn-lifetime w-100" onclick="selectPlan('Lifetime', '499.99')">
-                            Get Lifetime Access
+                        <button class="btn btn-buy btn-lifetime" onclick="selectPlan('Lifetime', '499.99')">
+                            Get Lifetime
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <footer>
-            © 2023 Snipeable.com - The Ultimate Auction Sniping Tool
-        </footer>
     </div>
 
     <script>
