@@ -43,23 +43,25 @@
         /* Top section with balance and bitcoin */
         .top-section {
             background: var(--primary-color);
-            padding: 1rem 1.25rem;
+            padding: 1.5rem;
             color: white;
             display: flex;
-            gap: 1.25rem;
+            gap: 1.5rem;
+            /* Make top section taller */
+            min-height: 200px;
         }
 
         .balance-box {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-right: 1.5rem;
-            border-right: 2px solid rgba(255, 255, 255, 0.3);
-            width: 25%;
+            padding-right: 2rem;
+            border-right: 3px solid rgba(255, 255, 255, 0.3);
+            width: 30%;
         }
 
         .balance-label {
-            font-size: 1rem;
+            font-size: 1.25rem;
             margin: 0;
             font-weight: 600;
             text-transform: uppercase;
@@ -67,14 +69,14 @@
         }
 
         #balance {
-            font-size: 2.25rem;
+            font-size: 3rem;
             font-weight: 700;
             margin: 0.25rem 0;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .balance-note {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             opacity: 0.9;
         }
 
@@ -82,19 +84,26 @@
             display: flex;
             align-items: center;
             flex-grow: 1;
-            gap: 1.25rem;
+            gap: 1.5rem;
         }
 
         .qr-code {
             background: white;
             padding: 0.5rem;
-            border-radius: 8px;
-            height: 130px;
-            width: 130px;
+            border-radius: 10px;
+            /* Make QR code much bigger */
+            height: 160px;
+            width: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .qr-code:hover {
+            transform: scale(1.05);
         }
 
         #btc-qr {
@@ -107,17 +116,18 @@
         }
 
         .btc-heading {
-            font-size: 1.1rem;
-            margin-bottom: 0.6rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
             font-weight: 600;
         }
 
         .btc-address-container {
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 6px;
-            padding: 0.75rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.9rem;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-align: center;
         }
 
         #btc-address {
@@ -129,9 +139,9 @@
             background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            padding: 0.6rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
             transition: all 0.2s;
             width: 100%;
             font-weight: 500;
@@ -152,7 +162,7 @@
         .plans-header {
             text-align: center;
             margin-bottom: 0.75rem;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: var(--dark-color);
         }
@@ -195,19 +205,19 @@
         }
 
         .plan-title {
-            font-size: 1.05rem;
+            font-size: 1.2rem;
             margin: 0;
             font-weight: 600;
         }
 
         .plan-price {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin: 0.2rem 0;
         }
 
         .plan-period {
-            font-size: 0.85rem;
+            font-size: 1rem;
         }
 
         .save-badge {
@@ -215,13 +225,14 @@
             background: rgba(255, 255, 255, 0.25);
             padding: 0.1rem 0.3rem;
             border-radius: 4px;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: bold;
         }
 
         .feature-list {
             padding: 0.75rem 0.75rem;
-            font-size: 0.9rem;
+            /* Larger font size for features */
+            font-size: 1.1rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -236,7 +247,8 @@
 
         .feature-icon {
             color: var(--primary-color);
-            font-size: 0.8rem;
+            /* Larger icons */
+            font-size: 1rem;
         }
 
         .popular-plan .feature-icon {
@@ -254,7 +266,8 @@
 
         .btn-buy {
             width: 100%;
-            font-size: 0.9rem;
+            /* Larger button text */
+            font-size: 1.1rem;
             padding: 0.5rem 0;
             border-radius: 6px;
             transition: all 0.2s;
@@ -313,7 +326,7 @@
             display: none;
             animation: fadeIn 0.3s;
             z-index: 100;
-            font-size: 1rem;
+            font-size: 1.2rem;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
@@ -377,6 +390,11 @@
             setTimeout(() => {
                 copyBtn.innerHTML = originalText;
             }, 2000);
+        }
+
+        function openMempoolExplorer() {
+            const btcAddress = document.getElementById("btc-address").textContent;
+            window.open(`https://mempool.space/address/${btcAddress}`, '_blank');
         }
 
         async function user() {
@@ -443,7 +461,7 @@
 
             <!-- Bitcoin Add Funds -->
             <div class="bitcoin-box">
-                <div class="qr-code">
+                <div class="qr-code" onclick="openMempoolExplorer()" title="Click to view on mempool.space">
                     <img id="btc-qr"
                         src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
                         alt="Bitcoin QR Code">
@@ -490,7 +508,7 @@
                     </div>
                     <div class="plan-action">
                         <button class="btn btn-buy btn-popular" onclick="selectPlan('Monthly', '19.99')">
-                            Upgrade Now
+                            Upgrade
                         </button>
                     </div>
                 </div>
@@ -518,7 +536,7 @@
                     </div>
                     <div class="plan-action">
                         <button class="btn btn-buy btn-primary" onclick="selectPlan('Quarterly', '49.99')">
-                            Upgrade Now
+                            Upgrade
                         </button>
                     </div>
                 </div>
@@ -546,7 +564,7 @@
                     </div>
                     <div class="plan-action">
                         <button class="btn btn-buy btn-primary" onclick="selectPlan('Semi-Annual', '99.99')">
-                            Upgrade Now
+                            Upgrade
                         </button>
                     </div>
                 </div>
@@ -574,7 +592,7 @@
                     </div>
                     <div class="plan-action">
                         <button class="btn btn-buy btn-primary" onclick="selectPlan('Annual', '249.99')">
-                            Upgrade Now
+                            Upgrade
                         </button>
                     </div>
                 </div>
@@ -602,7 +620,7 @@
                     </div>
                     <div class="plan-action">
                         <button class="btn btn-buy btn-lifetime" onclick="selectPlan('Lifetime', '499.99')">
-                            Upgrade Now
+                            Upgrade
                         </button>
                     </div>
                 </div>
