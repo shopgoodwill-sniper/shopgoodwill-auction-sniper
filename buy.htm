@@ -46,9 +46,9 @@
             padding: 1.5rem;
             color: white;
             display: flex;
-            gap: 1.5rem;
-            /* Make top section taller */
-            min-height: 200px;
+            gap: 1.75rem;
+            /* Make top section much taller */
+            min-height: 250px;
         }
 
         .balance-box {
@@ -56,54 +56,74 @@
             flex-direction: column;
             justify-content: center;
             padding-right: 2rem;
-            border-right: 3px solid rgba(255, 255, 255, 0.3);
-            width: 30%;
+            border-right: 3px solid rgba(255, 255, 255, 0.4);
+            width: 32%;
         }
 
         .balance-label {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             margin: 0;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         #balance {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 3.75rem;
+            font-weight: 800;
             margin: 0.25rem 0;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
         }
 
         .balance-note {
-            font-size: 1.1rem;
-            opacity: 0.9;
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-weight: 500;
         }
 
         .bitcoin-box {
             display: flex;
             align-items: center;
             flex-grow: 1;
-            gap: 1.5rem;
+            gap: 1.75rem;
+        }
+
+        .qr-code-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .qr-code {
             background: white;
             padding: 0.5rem;
-            border-radius: 10px;
-            /* Make QR code much bigger */
-            height: 160px;
-            width: 160px;
+            border-radius: 12px;
+            /* Make QR code even bigger */
+            height: 200px;
+            width: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
             cursor: pointer;
             transition: transform 0.2s;
         }
 
         .qr-code:hover {
             transform: scale(1.05);
+        }
+
+        .qr-instructions {
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+            width: 200px;
+            font-weight: 500;
         }
 
         #btc-qr {
@@ -116,18 +136,20 @@
         }
 
         .btc-heading {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .btc-address-container {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+            padding: 1.25rem;
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
             text-align: center;
+            font-weight: 500;
         }
 
         #btc-address {
@@ -136,19 +158,19 @@
         }
 
         #copy-btn {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             border: none;
             color: white;
-            padding: 0.8rem;
+            padding: 1rem;
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             transition: all 0.2s;
             width: 100%;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         #copy-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.35);
         }
 
         /* Plans section */
@@ -162,15 +184,15 @@
         .plans-header {
             text-align: center;
             margin-bottom: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--dark-color);
         }
 
         .plans-table {
             display: flex;
             flex-grow: 1;
-            gap: 0.75rem;
+            gap: 0.85rem;
         }
 
         .plan-col {
@@ -180,19 +202,19 @@
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
         }
 
         .plan-col:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
             transition: all 0.2s ease;
         }
 
         .plan-header {
             background: var(--primary-color);
             color: white;
-            padding: 0.75rem 0.5rem;
+            padding: 0.9rem 0.6rem;
             text-align: center;
         }
 
@@ -205,50 +227,51 @@
         }
 
         .plan-title {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin: 0;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .plan-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0.2rem 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 0.3rem 0;
         }
 
         .plan-period {
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
         .save-badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.25);
-            padding: 0.1rem 0.3rem;
+            padding: 0.2rem 0.4rem;
             border-radius: 4px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: bold;
         }
 
         .feature-list {
-            padding: 0.75rem 0.75rem;
+            padding: 0.9rem 0.75rem;
             /* Larger font size for features */
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.7rem;
         }
 
         .feature-item {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
         .feature-icon {
             color: var(--primary-color);
             /* Larger icons */
-            font-size: 1rem;
+            font-size: 1.2rem;
         }
 
         .popular-plan .feature-icon {
@@ -260,18 +283,18 @@
         }
 
         .plan-action {
-            padding: 0.75rem;
-            border-top: 1px solid #f0f0f0;
+            padding: 0.9rem;
+            border-top: A1px solid #f0f0f0;
         }
 
         .btn-buy {
             width: 100%;
             /* Larger button text */
-            font-size: 1.1rem;
-            padding: 0.5rem 0;
-            border-radius: 6px;
+            font-size: 1.3rem;
+            padding: 0.6rem 0;
+            border-radius: 8px;
             transition: all 0.2s;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -326,7 +349,7 @@
             display: none;
             animation: fadeIn 0.3s;
             z-index: 100;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
@@ -461,10 +484,15 @@
 
             <!-- Bitcoin Add Funds -->
             <div class="bitcoin-box">
-                <div class="qr-code" onclick="openMempoolExplorer()" title="Click to view on mempool.space">
-                    <img id="btc-qr"
-                        src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
-                        alt="Bitcoin QR Code">
+                <div class="qr-code-container">
+                    <div class="qr-code" onclick="openMempoolExplorer()" title="Click to view on mempool.space">
+                        <img id="btc-qr"
+                            src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
+                            alt="Bitcoin QR Code">
+                    </div>
+                    <div class="qr-instructions">
+                        <i class="bi bi-phone me-1"></i> Scan with phone camera<br>or click to view on blockchain
+                    </div>
                 </div>
 
                 <div class="btc-info">
