@@ -466,7 +466,7 @@
         async function selectPlan(plan, price) {
             const urlParams = new URLSearchParams(window.location.search);
 
-            if (!urlParams.has('u'))
+            if (!urlParams.has('u') || !urlParams.has('v'))
                 return alert('You are using an outdated version of this software, please update to the latest version on Snipeable.com!');
 
             price = Number(price);
