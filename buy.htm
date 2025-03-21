@@ -467,6 +467,9 @@
             if (Number(price) > window.balance)
                 return alert('Insufficient balance!');
 
+            if (!confirm('Really upgrade?'))
+                return;
+
             const paymentNotice = document.getElementById('payment-notice');
             paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> <strong>${plan} plan selected!</strong> Deposit <strong>$${price}</strong> to activate.`;
             paymentNotice.style.display = 'block';
