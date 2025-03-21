@@ -43,48 +43,58 @@
         /* Top section with balance and bitcoin */
         .top-section {
             background: var(--primary-color);
-            padding: 0.75rem 1rem;
+            padding: 1rem 1.25rem;
             color: white;
             display: flex;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
         .balance-box {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-right: 1rem;
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
-            width: 20%;
+            padding-right: 1.5rem;
+            border-right: 2px solid rgba(255, 255, 255, 0.3);
+            width: 25%;
         }
 
         .balance-label {
-            font-size: 0.8rem;
+            font-size: 1rem;
             margin: 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         #balance {
-            font-size: 1.75rem;
+            font-size: 2.25rem;
             font-weight: 700;
-            margin: 0;
+            margin: 0.25rem 0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .balance-note {
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
 
         .bitcoin-box {
             display: flex;
             align-items: center;
             flex-grow: 1;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
         .qr-code {
             background: white;
             padding: 0.5rem;
-            border-radius: 4px;
-            height: 100px;
-            width: 100px;
+            border-radius: 8px;
+            height: 130px;
+            width: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
         }
 
         #btc-qr {
@@ -96,12 +106,18 @@
             flex-grow: 1;
         }
 
+        .btc-heading {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
         .btc-address-container {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            padding: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 6px;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
         }
 
         #btc-address {
@@ -110,18 +126,19 @@
         }
 
         #copy-btn {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             border: none;
             color: white;
-            padding: 0.4rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
+            padding: 0.6rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
             transition: all 0.2s;
             width: 100%;
+            font-weight: 500;
         }
 
         #copy-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         /* Plans section */
@@ -129,19 +146,21 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            padding: 0.75rem 1rem;
+            padding: 1rem 1.25rem;
         }
 
         .plans-header {
             text-align: center;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-color);
         }
 
         .plans-table {
             display: flex;
             flex-grow: 1;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
 
         .plan-col {
@@ -149,14 +168,21 @@
             display: flex;
             flex-direction: column;
             border: 1px solid #e0e0e0;
-            border-radius: 6px;
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .plan-col:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            transition: all 0.2s ease;
         }
 
         .plan-header {
             background: var(--primary-color);
             color: white;
-            padding: 0.5rem;
+            padding: 0.75rem 0.5rem;
             text-align: center;
         }
 
@@ -169,47 +195,48 @@
         }
 
         .plan-title {
-            font-size: 0.9rem;
+            font-size: 1.05rem;
             margin: 0;
             font-weight: 600;
         }
 
         .plan-price {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin: 0;
+            margin: 0.2rem 0;
         }
 
         .plan-period {
-            font-size: 0.7rem;
+            font-size: 0.85rem;
         }
 
         .save-badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.1rem 0.25rem;
-            border-radius: 3px;
-            font-size: 0.65rem;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
         }
 
         .feature-list {
-            padding: 0.5rem;
-            font-size: 0.75rem;
+            padding: 0.75rem 0.75rem;
+            font-size: 0.9rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
+            gap: 0.5rem;
         }
 
         .feature-item {
             display: flex;
             align-items: center;
-            gap: 0.25rem;
+            gap: 0.4rem;
         }
 
         .feature-icon {
             color: var(--primary-color);
-            font-size: 0.7rem;
+            font-size: 0.8rem;
         }
 
         .popular-plan .feature-icon {
@@ -221,16 +248,19 @@
         }
 
         .plan-action {
-            padding: 0.5rem;
+            padding: 0.75rem;
             border-top: 1px solid #f0f0f0;
         }
 
         .btn-buy {
             width: 100%;
-            font-size: 0.75rem;
-            padding: 0.25rem 0;
-            border-radius: 4px;
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
+            border-radius: 6px;
             transition: all 0.2s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .btn-primary {
@@ -241,6 +271,8 @@
         .btn-primary:hover {
             background: var(--secondary-color);
             border-color: var(--secondary-color);
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
         }
 
         .btn-popular {
@@ -252,6 +284,8 @@
         .btn-popular:hover {
             background: #e67300;
             border-color: #e67300;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(247, 146, 30, 0.3);
         }
 
         .btn-lifetime {
@@ -263,22 +297,25 @@
         .btn-lifetime:hover {
             background: #000;
             border-color: #000;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
         }
 
         #payment-notice {
             position: fixed;
-            bottom: 0.75rem;
+            bottom: 1rem;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             color: white;
-            border-radius: 4px;
-            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            padding: 0.75rem 1.25rem;
             display: none;
             animation: fadeIn 0.3s;
             z-index: 100;
-            font-size: 0.8rem;
+            font-size: 1rem;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes fadeIn {
@@ -379,7 +416,7 @@
 
         function selectPlan(plan, price) {
             const paymentNotice = document.getElementById('payment-notice');
-            paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-1"></i> <strong>${plan} plan selected!</strong> Deposit <strong>$${price}</strong> to activate.`;
+            paymentNotice.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> <strong>${plan} plan selected!</strong> Deposit <strong>$${price}</strong> to activate.`;
             paymentNotice.style.display = 'block';
 
             const qrContainer = document.querySelector('.qr-code');
@@ -401,7 +438,7 @@
             <div class="balance-box">
                 <p class="balance-label">Your Balance</p>
                 <h2 id="balance">Loading...</h2>
-                <small>Default: 1% success fee</small>
+                <div class="balance-note">Default: 1% success fee</div>
             </div>
 
             <!-- Bitcoin Add Funds -->
@@ -413,7 +450,8 @@
                 </div>
 
                 <div class="btc-info">
-                    <h6><i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with Bitcoin</h6>
+                    <h5 class="btc-heading"><i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with Bitcoin
+                    </h5>
                     <div class="btc-address-container">
                         <span id="btc-address">Loading...</span>
                     </div>
@@ -426,7 +464,7 @@
 
         <!-- Plans Section -->
         <div class="plans-section">
-            <h5 class="plans-header">Upgrade to Unlimited Snipes with No Success Fees</h5>
+            <h4 class="plans-header">Upgrade to Unlimited Snipes with No Success Fees</h4>
 
             <div class="plans-table">
                 <!-- Monthly Plan -->
@@ -434,7 +472,7 @@
                     <div class="plan-header">
                         <h6 class="plan-title">Monthly</h6>
                         <p class="plan-price">$19.99</p>
-                        <small class="plan-period">per month</small>
+                        <div class="plan-period">per month</div>
                     </div>
                     <div class="feature-list">
                         <div class="feature-item">
@@ -452,7 +490,7 @@
                     </div>
                     <div class="plan-action">
                         <button class="btn btn-buy btn-popular" onclick="selectPlan('Monthly', '19.99')">
-                            Buy Now
+                            Upgrade Now
                         </button>
                     </div>
                 </div>
@@ -462,7 +500,7 @@
                     <div class="plan-header">
                         <h6 class="plan-title">Quarterly</h6>
                         <p class="plan-price">$49.99</p>
-                        <small class="plan-period">for 3 months <span class="save-badge">SAVE 16%</span></small>
+                        <div class="plan-period">for 3 months <span class="save-badge">SAVE 16%</span></div>
                     </div>
                     <div class="feature-list">
                         <div class="feature-item">
@@ -480,7 +518,7 @@
                     </div>
                     <div class="plan-action">
                         <button class="btn btn-buy btn-primary" onclick="selectPlan('Quarterly', '49.99')">
-                            Buy Now
+                            Upgrade Now
                         </button>
                     </div>
                 </div>
@@ -490,7 +528,7 @@
                     <div class="plan-header">
                         <h6 class="plan-title">Semi-Annual</h6>
                         <p class="plan-price">$99.99</p>
-                        <small class="plan-period">for 6 months <span class="save-badge">SAVE 17%</span></small>
+                        <div class="plan-period">for 6 months <span class="save-badge">SAVE 17%</span></div>
                     </div>
                     <div class="feature-list">
                         <div class="feature-item">
@@ -508,7 +546,7 @@
                     </div>
                     <div class="plan-action">
                         <button class="btn btn-buy btn-primary" onclick="selectPlan('Semi-Annual', '99.99')">
-                            Buy Now
+                            Upgrade Now
                         </button>
                     </div>
                 </div>
@@ -518,7 +556,7 @@
                     <div class="plan-header">
                         <h6 class="plan-title">Annual</h6>
                         <p class="plan-price">$249.99</p>
-                        <small class="plan-period">for 1 year <span class="save-badge">SAVE 25%</span></small>
+                        <div class="plan-period">for 1 year <span class="save-badge">SAVE 25%</span></div>
                     </div>
                     <div class="feature-list">
                         <div class="feature-item">
@@ -536,7 +574,7 @@
                     </div>
                     <div class="plan-action">
                         <button class="btn btn-buy btn-primary" onclick="selectPlan('Annual', '249.99')">
-                            Buy Now
+                            Upgrade Now
                         </button>
                     </div>
                 </div>
@@ -546,7 +584,7 @@
                     <div class="plan-header">
                         <h6 class="plan-title">Lifetime</h6>
                         <p class="plan-price">$499.99</p>
-                        <small class="plan-period">one-time payment</small>
+                        <div class="plan-period">one-time payment</div>
                     </div>
                     <div class="feature-list">
                         <div class="feature-item">
@@ -564,7 +602,7 @@
                     </div>
                     <div class="plan-action">
                         <button class="btn btn-buy btn-lifetime" onclick="selectPlan('Lifetime', '499.99')">
-                            Get Lifetime
+                            Upgrade Now
                         </button>
                     </div>
                 </div>
