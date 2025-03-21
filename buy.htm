@@ -12,15 +12,16 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snipeable - Pricing & Balance</title>
+    <title>Bid Sniper - Snipeable - Pricing & Balance</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <style>
         :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3f37c9;
-            --success-color: #4cc9f0;
-            --highlight-color: #f72585;
+            --primary-color: #0072bc;
+            /* ShopGoodwill blue */
+            --secondary-color: #005a96;
+            --highlight-color: #f7921e;
+            /* ShopGoodwill orange accent */
             --dark-color: #212529;
             --light-color: #f8f9fa;
         }
@@ -28,137 +29,167 @@
         body {
             background-color: #f8f9fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            overflow-y: auto;
         }
 
-        .balance-container {
-            max-width: 1000px;
+        .main-container {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 1rem;
+        }
+
+        .top-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
         .balance-card {
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             color: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+
+        .btc-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
         }
 
         #balance {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .current-pricing {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1rem;
         }
 
         .plan-card {
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9e9e9;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             height: 100%;
-            border: none;
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
         .plan-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         .plan-header {
-            padding: 1.5rem;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            padding: 0.75rem;
+            background-color: var(--primary-color);
             color: white;
+            text-align: center;
         }
 
-        .popular-plan {
-            background: linear-gradient(45deg, var(--highlight-color), var(--primary-color));
+        .popular-plan .plan-header {
+            background-color: var(--highlight-color);
         }
 
-        .lifetime-plan {
+        .lifetime-plan .plan-header {
             background: linear-gradient(45deg, #000000, #333333);
         }
 
         .plan-price {
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
+            margin: 0;
         }
 
         .plan-period {
-            font-size: 0.9rem;
-            opacity: 0.8;
+            font-size: 0.8rem;
+            opacity: 0.9;
         }
 
         .feature-list {
-            padding: 1.5rem;
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            flex-grow: 1;
         }
 
         .feature-item {
-            padding: 8px 0;
+            padding: 4px 0;
             display: flex;
-            align-items: center;
+            align-items: baseline;
         }
 
         .feature-icon {
             color: var(--primary-color);
-            margin-right: 10px;
+            margin-right: 6px;
+            font-size: 0.75rem;
         }
 
         .plan-action {
-            padding: 1rem 1.5rem 1.5rem;
-        }
-
-        .badge-corner {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 8px 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            transform: translate(30%, -30%) rotate(45deg);
-            transform-origin: center;
-            width: 150px;
-            text-align: center;
-        }
-
-        .btc-section {
-            background-color: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 0.75rem;
+            background-color: #f9f9f9;
         }
 
         .btc-address-box {
             background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 15px;
+            border-radius: 6px;
+            padding: 8px;
+            margin-bottom: 10px;
             word-break: break-all;
+            font-size: 0.85rem;
         }
 
-        .section-title {
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
+        #payment-notice {
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            font-size: 0.9rem;
         }
 
-        .section-title:after {
-            content: '';
+        .badge-popular {
             position: absolute;
-            width: 50%;
-            height: 3px;
-            background-color: var(--highlight-color);
-            bottom: -8px;
-            left: 25%;
+            top: 5px;
+            right: 5px;
+            font-size: 0.7rem;
+            z-index: 10;
+        }
+
+        .badge-best {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 0.7rem;
+            z-index: 10;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
         }
     </style>
     <script>
-        // PRESERVED ORIGINAL FUNCTION - KEEPING ALL FUNCTIONALITY INCLUDING COLOR LOGIC
         function updateBalance(amount) {
             amount = Number(amount);
-
             const balanceElement = document.getElementById("balance");
             balanceElement.textContent = `$${amount.toFixed(2)}`;
 
@@ -171,23 +202,16 @@
 
         function copyBitcoinAddress() {
             const btcAddress = document.getElementById("btc-address");
-
-            // Create a hidden textarea to copy text
             const textarea = document.createElement("textarea");
             textarea.value = btcAddress.textContent;
             document.body.appendChild(textarea);
-
-            // Select and copy text
             textarea.select();
             document.execCommand("copy");
-
-            // Remove temporary textarea
             document.body.removeChild(textarea);
 
-            // Show confirmation toast instead of alert
             const copyBtn = document.getElementById("copy-btn");
             const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Copied!';
+            copyBtn.innerHTML = '<i class="bi bi-check"></i> Copied';
             copyBtn.classList.remove("btn-primary");
             copyBtn.classList.add("btn-success");
 
@@ -198,7 +222,6 @@
             }, 2000);
         }
 
-        // PRESERVED ORIGINAL USER FUNCTION
         async function user() {
             const urlParams = new URLSearchParams(window.location.search);
 
@@ -206,15 +229,13 @@
                 return alert('You are using an outdated version of this software, please update to the latest version on Snipeable.com!');
 
             try {
-                const response = await fetch("https://server-production-b9a2.up.railway.app/u",
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded"
-                        },
-                        body: urlParams.toString() // Reuse urlParams directly
-                    }
-                );
+                const response = await fetch("https://server-production-b9a2.up.railway.app/u", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: urlParams.toString()
+                });
 
                 if (!response.ok)
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -226,7 +247,6 @@
                 else if (typeof data?.data === 'object') {
                     document.getElementById("btc-address").innerText = data.data.bitcoinAddress;
                     document.getElementById("btc-qr").src = `https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=${data.data.bitcoinAddress}`;
-
                     updateBalance(data.data.balance);
                 }
 
@@ -238,297 +258,209 @@
         }
 
         function selectPlan(plan, price) {
-            // Scroll to Bitcoin section
-            document.getElementById('btc-section').scrollIntoView({ behavior: 'smooth' });
-
-            // Update the payment notice with selected plan
             const paymentNotice = document.getElementById('payment-notice');
             paymentNotice.innerHTML = `<strong>You selected: ${plan}</strong><br>Please deposit <strong>$${price}</strong> to activate this plan.`;
             paymentNotice.style.display = 'block';
+
+            // Scroll to the top where the Bitcoin section is
+            window.scrollTo(0, 0);
         }
     </script>
 </head>
 
 <body>
-    <div class="balance-container">
-        <!-- Balance Section -->
-        <div class="balance-card">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start">
-                    <h3 class="mb-1">Your Current Balance</h3>
-                    <h1 id="balance" class="mb-0">Loading...</h1>
+    <div class="main-container">
+        <div class="top-section">
+            <!-- Balance Card -->
+            <div class="balance-card">
+                <h3 class="mb-2">Your Balance</h3>
+                <h1 id="balance" class="mb-3">Loading...</h1>
+                <div id="payment-notice" class="alert alert-warning" style="display: none; margin-bottom: 0;"></div>
+            </div>
+
+            <!-- Bitcoin Card -->
+            <div class="btc-card">
+                <div class="d-flex align-items-center mb-2">
+                    <div>
+                        <h5 class="mb-0"><i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with Bitcoin</h5>
+                        <small>Deposits reflected in 10-30 minutes</small>
+                    </div>
+                    <img id="btc-qr"
+                        src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
+                        alt="Bitcoin QR Code" class="ms-auto" style="width: 75px; height: 75px;">
                 </div>
-                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-                    <p class="mb-0">Status: <span class="badge bg-light text-dark">Auto-refreshing</span></p>
-                    <small>Updates every 5 seconds</small>
+                <div class="btc-address-box" id="btc-address">Loading...</div>
+                <button id="copy-btn" class="btn btn-primary btn-sm" onclick="copyBitcoinAddress()">
+                    <i class="bi bi-clipboard"></i> Copy Address
+                </button>
+            </div>
+        </div>
+
+        <!-- Current Pricing Notice -->
+        <div class="current-pricing">
+            <div class="d-flex align-items-center">
+                <div>
+                    <h6 class="mb-0">Your Current Plan: Default (1% Success Fee)</h6>
+                    <small>You only pay 1% of winning bid amounts. Upgrade to a package below for unlimited snipes with
+                        no success fees.</small>
                 </div>
             </div>
         </div>
 
-        <!-- Plans Section -->
-        <div class="text-center mb-4">
-            <h2 class="section-title">Choose Your Snipeable Plan</h2>
-            <p class="lead mb-4">Select the perfect plan for your auction sniping needs</p>
-        </div>
-
-        <div class="row">
-            <!-- Pay Per Success -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card plan-card h-100">
-                    <div class="plan-header">
-                        <h4 class="plan-title">Pay-Per-Success</h4>
-                        <div class="plan-price">1%</div>
-                        <div class="plan-period">of winning bids only</div>
-                    </div>
-                    <div class="feature-list">
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>Pay only when you win</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>No upfront costs</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>No monthly fees</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>Unlimited access to software</span>
-                        </div>
-                    </div>
-                    <div class="plan-action text-center">
-                        <button class="btn btn-outline-primary btn-lg w-100"
-                            onclick="selectPlan('Pay-Per-Success', '10.00')">
-                            <i class="bi bi-lightning-charge-fill"></i> Get Started
-                        </button>
-                        <small class="text-muted d-block mt-2">Minimum $10 deposit required</small>
-                    </div>
-                </div>
-            </div>
-
+        <!-- Plans Grid -->
+        <div class="plans-grid">
             <!-- Monthly Plan -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card plan-card h-100">
-                    <div class="plan-header popular-plan">
-                        <span class="badge bg-warning text-dark badge-corner">MOST POPULAR</span>
-                        <h4 class="plan-title">Monthly Unlimited</h4>
-                        <div class="plan-price">$19.99</div>
-                        <div class="plan-period">per month</div>
+            <div class="plan-card">
+                <span class="badge bg-warning text-dark badge-popular">POPULAR</span>
+                <div class="plan-header popular-plan">
+                    <h6 class="plan-title mb-0">Monthly</h6>
+                    <p class="plan-price">$19.99</p>
+                    <small class="plan-period">per month</small>
+                </div>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span><strong>Unlimited snipes</strong></span>
                     </div>
-                    <div class="feature-list">
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span><strong>Unlimited snipes</strong></span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span><strong>No success fees</strong></span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>Cancel anytime</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>Free updates</span>
-                        </div>
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span>No success fees</span>
                     </div>
-                    <div class="plan-action text-center">
-                        <button class="btn btn-primary btn-lg w-100" onclick="selectPlan('Monthly Unlimited', '19.99')">
-                            <i class="bi bi-lightning-charge-fill"></i> Choose Monthly
-                        </button>
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span>Cancel anytime</span>
                     </div>
+                </div>
+                <div class="plan-action">
+                    <button class="btn btn-primary w-100 btn-sm" onclick="selectPlan('Monthly', '19.99')">
+                        Buy Now
+                    </button>
                 </div>
             </div>
 
             <!-- Quarterly Plan -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card plan-card h-100">
-                    <div class="plan-header">
-                        <h4 class="plan-title">Quarterly</h4>
-                        <div class="plan-price">$49.99</div>
-                        <div class="plan-period">for 3 months <span class="badge bg-warning text-dark">SAVE 16%</span>
-                        </div>
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h6 class="plan-title mb-0">Quarterly</h6>
+                    <p class="plan-price">$49.99</p>
+                    <small class="plan-period">for 3 months <span class="badge bg-warning text-dark">SAVE
+                            16%</span></small>
+                </div>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span><strong>Unlimited snipes</strong></span>
                     </div>
-                    <div class="feature-list">
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span><strong>Unlimited snipes</strong></span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span><strong>No success fees</strong></span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>Priority support</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>All features included</span>
-                        </div>
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span>No success fees</span>
                     </div>
-                    <div class="plan-action text-center">
-                        <button class="btn btn-outline-primary btn-lg w-100"
-                            onclick="selectPlan('Quarterly Plan', '49.99')">
-                            <i class="bi bi-lightning-charge-fill"></i> Choose Quarterly
-                        </button>
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span>Priority support</span>
                     </div>
+                </div>
+                <div class="plan-action">
+                    <button class="btn btn-outline-primary w-100 btn-sm" onclick="selectPlan('Quarterly', '49.99')">
+                        Buy Now
+                    </button>
                 </div>
             </div>
 
-            <!-- Six Month Plan -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card plan-card h-100">
-                    <div class="plan-header">
-                        <h4 class="plan-title">Semi-Annual</h4>
-                        <div class="plan-price">$99.99</div>
-                        <div class="plan-period">for 6 months <span class="badge bg-warning text-dark">SAVE 17%</span>
-                        </div>
+            <!-- Semi-Annual Plan -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h6 class="plan-title mb-0">Semi-Annual</h6>
+                    <p class="plan-price">$99.99</p>
+                    <small class="plan-period">for 6 months <span class="badge bg-warning text-dark">SAVE
+                            17%</span></small>
+                </div>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span><strong>Unlimited snipes</strong></span>
                     </div>
-                    <div class="feature-list">
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span><strong>Unlimited snipes</strong></span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span><strong>No success fees</strong></span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>VIP support</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>Extended usage statistics</span>
-                        </div>
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span>No success fees</span>
                     </div>
-                    <div class="plan-action text-center">
-                        <button class="btn btn-outline-primary btn-lg w-100"
-                            onclick="selectPlan('Semi-Annual Plan', '99.99')">
-                            <i class="bi bi-lightning-charge-fill"></i> Choose Semi-Annual
-                        </button>
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span>VIP support</span>
                     </div>
+                </div>
+                <div class="plan-action">
+                    <button class="btn btn-outline-primary w-100 btn-sm" onclick="selectPlan('Semi-Annual', '99.99')">
+                        Buy Now
+                    </button>
                 </div>
             </div>
 
             <!-- Annual Plan -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card plan-card h-100">
-                    <div class="plan-header">
-                        <span class="badge bg-info text-dark badge-corner">BEST VALUE</span>
-                        <h4 class="plan-title">Annual</h4>
-                        <div class="plan-price">$249.99</div>
-                        <div class="plan-period">for a full year <span class="badge bg-warning text-dark">SAVE
-                                25%</span></div>
+            <div class="plan-card">
+                <span class="badge bg-info text-dark badge-best">BEST VALUE</span>
+                <div class="plan-header">
+                    <h6 class="plan-title mb-0">Annual</h6>
+                    <p class="plan-price">$249.99</p>
+                    <small class="plan-period">for 1 year <span class="badge bg-warning text-dark">SAVE
+                            25%</span></small>
+                </div>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span><strong>Unlimited snipes</strong></span>
                     </div>
-                    <div class="feature-list">
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span><strong>Unlimited snipes</strong></span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span><strong>No success fees</strong></span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>Premium VIP support</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>Advanced statistics & reporting</span>
-                        </div>
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span>No success fees</span>
                     </div>
-                    <div class="plan-action text-center">
-                        <button class="btn btn-outline-primary btn-lg w-100"
-                            onclick="selectPlan('Annual Plan', '249.99')">
-                            <i class="bi bi-lightning-charge-fill"></i> Choose Annual
-                        </button>
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span>Premium support</span>
                     </div>
+                </div>
+                <div class="plan-action">
+                    <button class="btn btn-outline-primary w-100 btn-sm" onclick="selectPlan('Annual', '249.99')">
+                        Buy Now
+                    </button>
                 </div>
             </div>
 
             <!-- Lifetime Plan -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card plan-card h-100">
-                    <div class="plan-header lifetime-plan">
-                        <h4 class="plan-title">Lifetime License</h4>
-                        <div class="plan-price">$499.99</div>
-                        <div class="plan-period">one-time payment</div>
+            <div class="plan-card">
+                <div class="plan-header lifetime-plan">
+                    <h6 class="plan-title mb-0">Lifetime</h6>
+                    <p class="plan-price">$499.99</p>
+                    <small class="plan-period">one-time payment</small>
+                </div>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span><strong>Pay once, use forever</strong></span>
                     </div>
-                    <div class="feature-list">
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span><strong>Pay once, use forever</strong></span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span><strong>Lifetime updates included</strong></span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>Elite priority support</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="bi bi-check-circle-fill feature-icon"></i>
-                            <span>Full access to all future features</span>
-                        </div>
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span>Lifetime updates</span>
                     </div>
-                    <div class="plan-action text-center">
-                        <button class="btn btn-dark btn-lg w-100" onclick="selectPlan('Lifetime License', '499.99')">
-                            <i class="bi bi-infinity"></i> Get Lifetime Access
-                        </button>
+                    <div class="feature-item">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <span>Elite support</span>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Bitcoin Section -->
-        <div id="btc-section" class="btc-section mt-4">
-            <div class="text-center mb-4">
-                <h3 class="section-title">Add Funds via Bitcoin</h3>
-                <div id="payment-notice" class="alert alert-primary" style="display: none;"></div>
-                <p>Scan the QR code below with your Bitcoin app to deposit funds:</p>
-            </div>
-
-            <div class="row align-items-center">
-                <div class="col-md-5 text-center mb-4 mb-md-0">
-                    <img id="btc-qr"
-                        src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
-                        alt="Bitcoin QR Code" class="img-fluid mb-3"
-                        style="max-width: 200px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                </div>
-                <div class="col-md-7">
-                    <h5 class="mb-3"><i class="bi bi-currency-bitcoin text-warning"></i> Bitcoin Address</h5>
-                    <div class="btc-address-box" id="btc-address">Loading...</div>
-                    <button id="copy-btn" class="btn btn-primary" onclick="copyBitcoinAddress()">
-                        <i class="bi bi-clipboard"></i> Copy Address
+                <div class="plan-action">
+                    <button class="btn btn-dark w-100 btn-sm" onclick="selectPlan('Lifetime', '499.99')">
+                        Buy Now
                     </button>
-
-                    <div class="alert alert-info mt-4">
-                        <i class="bi bi-info-circle-fill"></i> <strong>Important:</strong> Bitcoin payments typically
-                        take 10-30 minutes to reflect, but may take longer during high network traffic. Your balance
-                        will update automatically once confirmed.
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-1">© 2023 Snipeable.com - All Rights Reserved</p>
-            <p class="text-muted mb-0">The Ultimate Auction Sniping Tool</p>
-        </div>
+    <footer class="text-center">
+        <small>© 2023 Snipeable.com - The Ultimate Auction Sniping Tool</small>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Preserved original auto-refresh functionality
         user();
         setInterval(() => {
             user();
