@@ -66,44 +66,6 @@ Function CheckForErrors()
     End If
 End Function
 
-'Sub KillRunningAppProcesses()
-'    Dim objWMIService, colProcesses, objProcess, exePath
-'
-'    On Error Resume Next
-'
-'    ' Connect to WMI service
-'    Set objWMIService = GetObject("winmgmts:\\.\root\cimv2")
-'    If Err.Number <> 0 Then
-'        MsgBox "Error: Unable to connect to WMI service. Ensure WMI is enabled and you have administrative privileges.", vbCritical
-'        Exit Sub
-'    End If
-'
-'    ' Query for all processes
-'    Set colProcesses = objWMIService.ExecQuery("SELECT * FROM Win32_Process")
-'    If Err.Number <> 0 Then
-'        MsgBox "Error: Unable to query processes. Ensure you have administrative privileges.", vbCritical
-'        Exit Sub
-'    End If
-'
-'    ' Loop through all processes and terminate those in "\Bid_Sniper\" path
-'    For Each objProcess In colProcesses
-'        exePath = ""
-'        On Error Resume Next
-'        exePath = objProcess.ExecutablePath
-'        On Error GoTo 0
-'
-'        If InStr(LCase(exePath), "\bid_sniper\") > 0 Then
-'            objProcess.Terminate
-'        End If
-'    Next
-'
-'    ' Clean up objects
-'    Set colProcesses = Nothing
-'    Set objWMIService = Nothing
-'
-'    On Error GoTo 0
-'End Sub
-
 Sub KillRunningAppProcesses()
     Dim objWMIService, colProcesses, objProcess, exePath
 
@@ -152,17 +114,51 @@ End Sub
 
 Sub DownloadAndExtract()
     Dim downloadAndExtractScript, psCommand
+    
+    ' Escape any single quotes in the paths
+    Dim safeZipFile, safeExtractPath, safeFullExtractPath, safeLogFile
+    safeZipFile = Replace(zipFile, "'", "''")
+    safeExtractPath = Replace(extractPath, "'", "''")
+    safeFullExtractPath = Replace(fullExtractPath, "'", "''")
+    safeLogFile = Replace(logFile, "'", "''")
+    
     downloadAndExtractScript = _
         "param($url, $zipFile, $extractPath, $fullExtractPath)" & vbCrLf & _
-        "if (Test-Path -LiteralPath $zipFile) { Remove-Item -LiteralPath $zipFile -Force }" & vbCrLf & _
-        "if (Test-Path -LiteralPath $fullExtractPath) { Remove-Item -LiteralPath $fullExtractPath -Recurse -Force }" & vbCrLf & _
-        "Start-BitsTransfer -Source $url -Destination $zipFile" & vbCrLf & _
-        "Expand-Archive -LiteralPath $zipFile -DestinationPath $extractPath -Force" & vbCrLf & _
-        "New-NetFirewallRule -DisplayName 'Allow Bid Sniper App' -Direction Inbound -Program (Join-Path $fullExtractPath 'node_modules\electron\dist\electron.exe') -Action Allow -Profile Any"
+        "$ErrorActionPreference = 'Stop'" & vbCrLf & _
+        "Write-Host 'Using paths:' -ForegroundColor Cyan" & vbCrLf & _
+        "Write-Host 'Zip file: ' $zipFile" & vbCrLf & _
+        "Write-Host 'Extract path: ' $extractPath" & vbCrLf & _
+        "Write-Host 'Full extract path: ' $fullExtractPath" & vbCrLf & _
+        "try {" & vbCrLf & _
+        "    # Check and remove zip file if it exists" & vbCrLf & _
+        "    if (Test-Path -Path $zipFile) {" & vbCrLf & _
+        "        Remove-Item -Path $zipFile -Force" & vbCrLf & _
+        "        Write-Host 'Removed existing zip file'" & vbCrLf & _
+        "    }" & vbCrLf & _
+        "    # Check and remove extract directory if it exists" & vbCrLf & _
+        "    if (Test-Path -Path $fullExtractPath) {" & vbCrLf & _
+        "        Remove-Item -Path $fullExtractPath -Recurse -Force" & vbCrLf & _
+        "        Write-Host 'Removed existing extract directory'" & vbCrLf & _
+        "    }" & vbCrLf & _
+        "    Write-Host 'Downloading file...' -ForegroundColor Green" & vbCrLf & _
+        "    Start-BitsTransfer -Source $url -Destination $zipFile" & vbCrLf & _
+        "    Write-Host 'Download complete, extracting...' -ForegroundColor Green" & vbCrLf & _
+        "    Expand-Archive -Path $zipFile -DestinationPath $extractPath -Force" & vbCrLf & _
+        "    Write-Host 'Creating firewall rule...' -ForegroundColor Green" & vbCrLf & _
+        "    New-NetFirewallRule -DisplayName 'Allow Bid Sniper App' -Direction Inbound -Program (Join-Path $fullExtractPath 'node_modules\electron\dist\electron.exe') -Action Allow -Profile Any" & vbCrLf & _
+        "} catch {" & vbCrLf & _
+        "    Write-Host 'Error:' $_.Exception.Message -ForegroundColor Red" & vbCrLf & _
+        "    Write-Host 'Stack trace:' $_.ScriptStackTrace -ForegroundColor Red" & vbCrLf & _
+        "    exit 1" & vbCrLf & _
+        "}"
 
-    ' Properly escape the paths for PowerShell by double-quoting them
-    psCommand = "powershell -NoProfile -Command " & _
-                """& {" & downloadAndExtractScript & "} -url '" & dropboxUrl & "' -zipFile '" & zipFile & "' -extractPath '" & extractPath & "' -fullExtractPath '" & fullExtractPath & "' 2>&1 | Out-File -FilePath '" & logFile & "' -Encoding utf8"""
+    psCommand = "powershell -NoProfile -ExecutionPolicy Bypass -Command " & _
+                """& {" & downloadAndExtractScript & "} " & _
+                "-url '" & dropboxUrl & "' " & _
+                "-zipFile '" & safeZipFile & "' " & _
+                "-extractPath '" & safeExtractPath & "' " & _
+                "-fullExtractPath '" & safeFullExtractPath & "' " & _
+                "| Out-File -FilePath '" & safeLogFile & "' -Encoding utf8; if ($LASTEXITCODE -ne 0) { exit 1 }"""
 
     shell.Run psCommand, 1, True
 End Sub
