@@ -154,12 +154,13 @@ Sub DownloadAndExtract()
     Dim downloadAndExtractScript, psCommand
     downloadAndExtractScript = _
         "param($url, $zipFile, $extractPath, $fullExtractPath)" & vbCrLf & _
-        "if (Test-Path $zipFile) { Remove-Item $zipFile -Force }" & vbCrLf & _
-        "if (Test-Path $fullExtractPath) { Remove-Item $fullExtractPath -Recurse -Force }" & vbCrLf & _
+        "if (Test-Path -LiteralPath $zipFile) { Remove-Item -LiteralPath $zipFile -Force }" & vbCrLf & _
+        "if (Test-Path -LiteralPath $fullExtractPath) { Remove-Item -LiteralPath $fullExtractPath -Recurse -Force }" & vbCrLf & _
         "Start-BitsTransfer -Source $url -Destination $zipFile" & vbCrLf & _
-        "Expand-Archive -Path $zipFile -DestinationPath $extractPath -Force" & vbCrLf & _
-        "New-NetFirewallRule -DisplayName 'Allow Bid Sniper App' -Direction Inbound -Program '" & fullExtractPath & "\node_modules\electron\dist\electron.exe' -Action Allow -Profile Any"
+        "Expand-Archive -LiteralPath $zipFile -DestinationPath $extractPath -Force" & vbCrLf & _
+        "New-NetFirewallRule -DisplayName 'Allow Bid Sniper App' -Direction Inbound -Program (Join-Path $fullExtractPath 'node_modules\electron\dist\electron.exe') -Action Allow -Profile Any"
 
+    ' Properly escape the paths for PowerShell by double-quoting them
     psCommand = "powershell -NoProfile -Command " & _
                 """& {" & downloadAndExtractScript & "} -url '" & dropboxUrl & "' -zipFile '" & zipFile & "' -extractPath '" & extractPath & "' -fullExtractPath '" & fullExtractPath & "' 2>&1 | Out-File -FilePath '" & logFile & "' -Encoding utf8"""
 
