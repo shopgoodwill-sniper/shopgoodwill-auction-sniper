@@ -24,6 +24,124 @@
             --light-color: #f8f9fa;
         }
 
+        /* Add phone callout styling with improved alignment */
+        .phone-callout {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            background: linear-gradient(135deg, var(--highlight-color), #ff6b00);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+            /* Adjust to align perfectly with QR instructions */
+            margin-top: -1rem;
+            height: fit-content;
+            align-self: flex-start;
+        }
+
+        .phone-callout::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+            z-index: 0;
+        }
+
+        /* Improved phone callout content alignment */
+        .phone-callout-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .phone-callout-content i {
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+        }
+
+        .phone-callout-content i.bi-telephone-fill {
+            margin-right: 0.5rem;
+        }
+
+        .phone-callout-content i.bi-apple,
+        .phone-callout-content i.bi-currency-dollar,
+        .phone-callout-content i.bi-credit-card {
+            margin-left: 0.4rem;
+        }
+
+        .phone-number-inline {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin: 0 0.3rem;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            vertical-align: middle;
+        }
+
+        @keyframes shine {
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Remove old banner */
+        .phone-payment-banner {
+            display: none;
+        }
+
+        /* Adjust btc-heading-container for perfect alignment */
+        .btc-heading-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            /* Changed from center to flex-start */
+            margin-bottom: 1rem;
+            width: 100%;
+            /* Ensure consistent alignment */
+            line-height: 1;
+            position: relative;
+            /* Add position relative */
+        }
+
+        /* Make btc-heading have consistent vertical spacing */
+        .btc-heading {
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
+
         html,
         body {
             height: 100%;
@@ -140,13 +258,6 @@
 
         .btc-info {
             flex-grow: 1;
-        }
-
-        .btc-heading {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .btc-address-container {
@@ -547,8 +658,22 @@
                 </div>
 
                 <div class="btc-info">
-                    <h5 class="btc-heading"><i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with Bitcoin
-                    </h5>
+                    <div class="btc-heading-container">
+                        <h5 class="btc-heading"><i class="bi bi-currency-bitcoin text-warning"></i> Add Funds with
+                            Bitcoin</h5>
+
+                        <!-- New Phone Payment Button -->
+                        <div class="phone-callout">
+                            <div class="phone-callout-content">
+                                <i class="bi bi-telephone-fill"></i>
+                                Pay by phone: <span class="phone-number-inline">310-923-5603</span>
+                                <i class="bi bi-apple"></i>
+                                <i class="bi bi-currency-dollar"></i>
+                                <i class="bi bi-credit-card"></i>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="btc-address-container">
                         <span id="btc-address">Loading...</span>
                     </div>
