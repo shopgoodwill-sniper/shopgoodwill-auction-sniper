@@ -563,7 +563,7 @@
                     throw new Error(data.data);
                 else if (typeof data?.data === 'object') {
                     document.getElementById("btc-address").innerText = data.data.bitcoinAddress;
-                    document.getElementById("btc-qr").src = `https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=${data.data.bitcoinAddress}`;
+                    document.getElementById("btc-qr").src = data.data.qr;
                     updateBalance(data.data.balance);
                 }
 
@@ -652,7 +652,7 @@
                     </div>
                     <div class="qr-code" onclick="openMempoolExplorer()" title="Click to view on mempool.space">
                         <img id="btc-qr"
-                            src="https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=1YourBitcoinAddressHere"
+                            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                             alt="Bitcoin QR Code">
                     </div>
                 </div>
